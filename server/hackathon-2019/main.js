@@ -129,7 +129,8 @@ var AppModule = /** @class */ (function () {
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatGridListModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatRadioModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatExpansionModule"]
+                _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatExpansionModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatInputModule"]
             ],
             providers: [_kamiazya_ngx_speech_recognition__WEBPACK_IMPORTED_MODULE_9__["SpeechRecognitionService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
@@ -160,7 +161,7 @@ module.exports = "\r\n.left-div , .right-div {\r\n    padding:50px;\r\n    displ
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"left-div\">\r\n      <mat-card>\r\n                  <mat-radio-group>\r\n                              <mat-label> Översätt från</mat-label>\r\n                              <br>\r\n                              <mat-radio-button  *ngFor=\"let lang of languages\" [value]=\"lang.code\" (click)=\"translateFrom(lang)\">{{lang.lang}}</mat-radio-button>\r\n                        </mat-radio-group>\r\n      </mat-card>\r\n      \r\n      <br>\r\n      <mat-card>\r\n                  <mat-radio-group>\r\n                              <mat-label> Översätt till</mat-label>\r\n                              <br>\r\n                              <mat-radio-button  *ngFor=\"let lang of languages\" [value]=\"lang.code\" (click)=\"translateTo(lang)\">{{lang.lang}}</mat-radio-button>\r\n                        </mat-radio-group>\r\n      </mat-card>  \r\n<br>\r\n      <button mat-raised-button color=\"primary\" [disabled]=\"recording\" (click)=\"startListen()\">Get Voice</button>\r\n      <button mat-raised-button [disabled]=\"!recording\" (click)=\"stopListen()\">Stop Voice</button>\r\n      <button mat-raised-button (click)=\"translate()\">Translate</button>\r\n\r\n      <div class=\"container\">\r\n            <h5> Voice Input</h5> <p> {{message}}</p>\r\n            <div [@answerAnim]=\"anim\">\r\n            <h5> Translated Voice</h5>  <p>{{translateMsg}}</p>\r\n            <h2>dawdawdawd</h2>\r\n            </div>\r\n      </div>\r\n<!--\r\n   <p>Raw speech-to-text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">{{message}}</textarea>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated speech</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">{{translateMsg}}</textarea>\r\n      </div>\r\n      <p>Select translated language</p>\r\n     \r\n\r\n</div>\r\n\r\n<div class=\"right-div\">\r\n\r\n      <p>Operator side</p>\r\n      <div class=\"input-group\" id=\"textareaOperator\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">Placeholder</textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"translateButton\" onclick=\"textTranslate()\">Translate</span>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\"></textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"synthesisSpeechButton\">Synthesis speech</span>\r\n      </div>\r\n\r\n</div>\r\n-->\r\n   "
+module.exports = "<div class=\"left-div\">\r\n      <mat-card>\r\n                  <mat-radio-group>\r\n                              <mat-label> Översätt från</mat-label>\r\n                              <br>\r\n                              <mat-radio-button  *ngFor=\"let lang of languages\" [value]=\"lang.code\" (click)=\"translateFrom(lang)\">{{lang.lang}}</mat-radio-button>\r\n                        </mat-radio-group>\r\n      </mat-card>\r\n      \r\n      <br>\r\n      <mat-card>\r\n                  <mat-radio-group>\r\n                              <mat-label> Översätt till</mat-label>\r\n                              <br>\r\n                              <mat-radio-button  *ngFor=\"let lang of languages\" [value]=\"lang.code\" (click)=\"translateTo(lang)\">{{lang.lang}}</mat-radio-button>\r\n                        </mat-radio-group>\r\n      </mat-card>  \r\n      <br>\r\n      <mat-form-field >\r\n                  <input matInput placeholder=\"Skriv ord\" (click)=\"wordInput($event)\" #wordinput >\r\n      </mat-form-field >\r\n\r\n<br>\r\n      <button mat-raised-button color=\"primary\" [disabled]=\"recording\" (click)=\"startListen()\">Get Voice</button>\r\n      <button mat-raised-button [disabled]=\"!recording\" (click)=\"stopListen()\">Stop Voice</button>\r\n      <button mat-raised-button (click)=\"wordinput.click()\">Translate</button>\r\n\r\n      <div class=\"container\">\r\n            <h5> Voice Input</h5> <p> {{message}}</p>\r\n            <div [@answerAnim]=\"anim\">\r\n            <h5> Translated Voice</h5>  <p>{{translateMsg}}</p>\r\n            </div>\r\n      </div>\r\n<!--\r\n   <p>Raw speech-to-text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">{{message}}</textarea>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated speech</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">{{translateMsg}}</textarea>\r\n      </div>\r\n      <p>Select translated language</p>\r\n     \r\n\r\n</div>\r\n\r\n<div class=\"right-div\">\r\n\r\n      <p>Operator side</p>\r\n      <div class=\"input-group\" id=\"textareaOperator\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">Placeholder</textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"translateButton\" onclick=\"textTranslate()\">Translate</span>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\"></textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"synthesisSpeechButton\">Synthesis speech</span>\r\n      </div>\r\n\r\n</div>\r\n-->\r\n   "
 
 /***/ }),
 
@@ -194,7 +195,7 @@ var MainComponent = /** @class */ (function () {
         this.vs = vs;
         this.vts = vts;
         this.languages = [
-            { lang: 'Svenska', code: 'sv' },
+            { lang: 'Svenska', code: 'sv-SE' },
             { lang: 'Engelska', code: 'en-GB' },
             { lang: 'Tyska', code: 'de-DE' },
             { lang: 'Franska', code: 'fr-FR' },
@@ -210,6 +211,7 @@ var MainComponent = /** @class */ (function () {
         });
         this.translateSub = this.vts.translateMsgChange.subscribe(function (value) {
             _this.translateMsg = value;
+            _this.anim = 'active';
             _this.sayText(_this.translateMsg);
         });
     };
@@ -235,11 +237,11 @@ var MainComponent = /** @class */ (function () {
             _this.vs.stop();
         });
     };
-    MainComponent.prototype.translate = function () {
-        this.vts.exec();
+    MainComponent.prototype.wordInput = function (event) {
+        this.vts.exec(event.srcElement.value);
     };
     MainComponent.prototype.translateTo = function (lang) {
-        this.vs.setLanguage(lang);
+        this.vts.setLanguage(lang);
     };
     MainComponent.prototype.translateFrom = function (lang) {
         this.vs.setLanguage(lang);
@@ -267,7 +269,10 @@ var MainComponent = /** @class */ (function () {
             animations: [
                 Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["trigger"])('answerAnim', [
                     Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('active', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({})),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('inactive', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({})),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('inactive', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({
+                        height: '0px',
+                        overflow: 'hidden'
+                    })),
                     Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["transition"])('inactive <=> active', [
                         Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["animate"])('0.2s')
                     ])
@@ -365,10 +370,8 @@ var VoiceTranslationService = /** @class */ (function () {
         this.languageTo = 'fr';
         this.translateMsgChange = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
     }
-    VoiceTranslationService.prototype.exec = function () {
-        // skriv kod här
-        console.log('exec');
-        this.request("hej mitt namn är herman");
+    VoiceTranslationService.prototype.exec = function (msg) {
+        this.request(msg);
     };
     VoiceTranslationService.prototype.translate = function (message) {
         // kod för översättning från voice input
@@ -376,7 +379,7 @@ var VoiceTranslationService = /** @class */ (function () {
     VoiceTranslationService.prototype.setLanguage = function (language) {
         switch (language.code) {
             case 'sv-SE':
-                this.languageTo = 'se';
+                this.languageTo = 'sv';
                 break;
             case 'en-GB':
                 this.languageTo = 'en';

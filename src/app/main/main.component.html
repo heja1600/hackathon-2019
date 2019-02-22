@@ -15,16 +15,20 @@
                               <mat-radio-button  *ngFor="let lang of languages" [value]="lang.code" (click)="translateTo(lang)">{{lang.lang}}</mat-radio-button>
                         </mat-radio-group>
       </mat-card>  
+      <br>
+      <mat-form-field >
+                  <input matInput placeholder="Skriv ord" (click)="wordInput($event)" #wordinput >
+      </mat-form-field >
+
 <br>
       <button mat-raised-button color="primary" [disabled]="recording" (click)="startListen()">Get Voice</button>
       <button mat-raised-button [disabled]="!recording" (click)="stopListen()">Stop Voice</button>
-      <button mat-raised-button (click)="translate()">Translate</button>
+      <button mat-raised-button (click)="wordinput.click()">Translate</button>
 
       <div class="container">
             <h5> Voice Input</h5> <p> {{message}}</p>
             <div [@answerAnim]="anim">
             <h5> Translated Voice</h5>  <p>{{translateMsg}}</p>
-            <h2>dawdawdawd</h2>
             </div>
       </div>
 <!--

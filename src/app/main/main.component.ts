@@ -22,7 +22,8 @@ import { trigger, style, state, animate, transition } from '@angular/animations'
 
       })),
       state('inactive', style({
-
+        height: '0px',
+        overflow: 'hidden'
       })),
       transition('inactive <=> active', [
         animate('0.2s')
@@ -34,7 +35,7 @@ import { trigger, style, state, animate, transition } from '@angular/animations'
 
 export class MainComponent implements OnInit {
   languages: Language[] = [
-    {lang:'Svenska', code: 'sv'},
+    {lang:'Svenska', code: 'sv-SE'},
     {lang:'Engelska', code: 'en-GB'},
     {lang:'Tyska', code: 'de-DE'},
     {lang:'Franska', code: 'fr-FR'},
@@ -56,6 +57,7 @@ export class MainComponent implements OnInit {
     })
     this.translateSub = this.vts.translateMsgChange.subscribe((value) => {
       this.translateMsg = value;
+      this.anim =  'active';
       this.sayText(this.translateMsg);
     })
   }
@@ -81,11 +83,11 @@ export class MainComponent implements OnInit {
  });
 
   }
-  translate(): void {
-    this.vts.exec();
+  wordInput(event: any) {
+    this.vts.exec(event.srcElement.value);
   }
   translateTo(lang: Language) {
-    this.vs.setLanguage(lang);
+    this.vts.setLanguage(lang);
   }
   translateFrom(lang: Language) {
     this.vs.setLanguage(lang);

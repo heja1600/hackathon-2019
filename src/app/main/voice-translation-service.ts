@@ -15,11 +15,8 @@ export class VoiceTranslationService {
     constructor(private httpClient: HttpClient) {
 
     }
-    exec() {
-        // skriv kod här
-        console.log('exec');
-        this.request("hej mitt namn är herman");
-
+    exec(msg: string) {
+        this.request(msg);
     }
     translate(message: string) {
        
@@ -29,7 +26,7 @@ export class VoiceTranslationService {
     setLanguage(language: Language) {
         switch(language.code) {
             case 'sv-SE':
-                this.languageTo = 'se';
+                this.languageTo = 'sv';
             break;
             case 'en-GB': 
                 this.languageTo = 'en';

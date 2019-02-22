@@ -24,7 +24,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     MatGridListModule,
     MatRadioModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatInputModule
   ],
   providers: [SpeechRecognitionService],
   bootstrap: [AppComponent]
