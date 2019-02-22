@@ -5,11 +5,14 @@ import {
   RxSpeechRecognitionService
 } from '@kamiazya/ngx-speech-recognition';
 import { Subscription } from 'rxjs';
+import { Translator } from 'angular-translator';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
-  providers: [VoiceService, VoiceTranslationService, RxSpeechRecognitionService]
+  providers: [VoiceService,
+     VoiceTranslationService,
+      RxSpeechRecognitionService]
 })
 export class MainComponent implements OnInit {
   recordning = false;

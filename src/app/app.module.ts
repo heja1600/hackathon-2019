@@ -6,6 +6,7 @@ import { MainComponent } from './main/main.component';
 import { MatCardModule, MatButtonModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RxSpeechRecognitionService, SpeechRecognitionService } from '@kamiazya/ngx-speech-recognition';
+import { Translator, TranslatorModule } from 'angular-translator';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,11 @@ import { RxSpeechRecognitionService, SpeechRecognitionService } from '@kamiazya/
     MatCardModule,  
     BrowserModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    TranslatorModule.forRoot({
+      providedLanguages: ['de', 'en', 'ru'],
+      defaultLanguage: 'de'
+    })
   ],
   providers: [SpeechRecognitionService],
   bootstrap: [AppComponent]

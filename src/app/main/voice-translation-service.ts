@@ -1,8 +1,11 @@
+import { Translator } from "angular-translator";
+import { Injectable } from '@angular/core';
 
-
+@Injectable()
 export class VoiceTranslationService {
-    constructor() {
-
+    
+    constructor(private translator: Translator) {
+        
     }
     exec() {
         // skriv kod här
@@ -11,5 +14,8 @@ export class VoiceTranslationService {
     translate(message: string) {
         console.log('translate function', message);
         // kod för översättning från voice input
+        this.translator.translate(message).then(
+            (translation) => console.log(translation)
+          );
     }
 }
