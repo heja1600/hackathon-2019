@@ -1,0 +1,6 @@
+npm install -g @angular/cli
+npm install --save @angular/material @angular/cdk @angular/animations
+ng add @angular/material
+npm install bootstrap@3.3.7
+// för att starta appen "ng-serve"
+// skapa ny component "ng g c 'namn' --spec false"
