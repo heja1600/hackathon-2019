@@ -77,10 +77,7 @@ export class MainComponent implements OnInit {
   }
   stopListen(): void {
     this.recording = false;
-    this.delay(3000).then(any=>{
-      this.vs.stop();
- });
-
+    this.vs.stop();
   }
   wordInput(event: any) {
     this.vts.exec(event.srcElement.value);
