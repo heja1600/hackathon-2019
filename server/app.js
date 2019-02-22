@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const translate = require('@k3rn31p4nic/google-translate-api');
-
+const say = require('say');
 console.log("SERVER IS ONLINE");
 const bodyParser = require("body-parser")
 app.use(bodyParser.json());
