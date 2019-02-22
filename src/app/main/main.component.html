@@ -26,9 +26,11 @@
       <button mat-raised-button (click)="wordinput.click()">Translate</button>
 
       <div class="container">
-            <h5> Voice Input</h5> <p> {{message}}</p>
+            <h5> Voice Input</h5>
+            <textarea class="form-control custom-control input-group" rows="3" style="resize:none">{{message}}</textarea>
             <div [@answerAnim]="anim">
-            <h5> Translated Voice</h5>  <p>{{translateMsg}}</p>
+            <h5> Translated Voice</h5>
+            <textarea class="form-control custom-control input-group" rows="3" style="resize:none">{{translateMsg}}</textarea>
             </div>
       </div>
 <!--
