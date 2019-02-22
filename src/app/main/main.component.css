@@ -3,12 +3,8 @@
     padding:50px;
     display: inline-block;
 }
-.left-div {
-    width: 40%;
-    float: left;
-}
 
-.right-div{
-    width: 40%;
-    float: right;
+mat-radio-group {
+    display: inline-flex;
+    flex-direction: column;
 }

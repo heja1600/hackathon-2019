@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { Language } from '../shared/language';
 
 @Injectable()
 export class VoiceTranslationService {
@@ -25,8 +26,21 @@ export class VoiceTranslationService {
         // kod för översättning från voice input
     }
 
-    switchLanguage(language: string) {
-        
+    setLanguage(language: Language) {
+        switch(language.code) {
+            case 'sv-SE':
+                this.languageTo = 'se';
+            break;
+            case 'en-GB': 
+                this.languageTo = 'en';
+            break;
+            case 'de-DE': 
+                this.languageTo = 'de';
+            break;
+            case 'fr-FR': 
+                this.languageTo = 'fr';
+            break;
+        }
     }
     sendMessage(msg: string) {
         console.log('sendMessage');
@@ -49,5 +63,6 @@ export class VoiceTranslationService {
     setMessage(msg: string) {
         this.translateMsgChange.next(msg);
     }
+
 
 }

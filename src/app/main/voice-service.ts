@@ -13,12 +13,13 @@ export class VoiceService {
     language: Language = {lang: 'Svenska', code: 'sv-SE'};
     messageChange: Subject<string> = new Subject<string>();
     constructor(public ss: SpeechRecognitionService) {
-        this.ss.onstart = (e) => {
-          };
           this.ss.onresult = (e) => {
             this.message = e.results[0].item(0).transcript;
             this.messageChange.next(this.message);
           };
+          this.ss.onaudiostart = (e) => {
+              console.log('hej');
+          }
     }
     start() {
         console.log('start', this.language);
@@ -27,7 +28,6 @@ export class VoiceService {
     }
     stop() {
         this.ss.stop();
-        
     }
     setLanguage(lang: Language) {
         console.log(lang);

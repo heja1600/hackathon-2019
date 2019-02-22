@@ -76,13 +76,16 @@ export class MainComponent implements OnInit {
   }
   stopListen(): void {
     this.recording = false;
-    this.delay(3000).then(any=>{
+    this.delay(1100).then(any=>{
       this.vs.stop();
  });
 
   }
   translate(): void {
     this.vts.exec();
+  }
+  translateTo(lang: Language) {
+    this.vs.setLanguage(lang);
   }
   translateFrom(lang: Language) {
     this.vs.setLanguage(lang);

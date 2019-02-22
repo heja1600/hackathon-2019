@@ -1,15 +1,20 @@
 <div class="left-div">
-      <mat-radio-group>
-            <mat-label> Översätt från</mat-label>
-            <br>
-            <mat-radio-button  *ngFor="let lang of languages" [value]="lang.code" (click)="translateFrom(lang)">{{lang.lang}}</mat-radio-button>
-      </mat-radio-group>
+      <mat-card>
+                  <mat-radio-group>
+                              <mat-label> Översätt från</mat-label>
+                              <br>
+                              <mat-radio-button  *ngFor="let lang of languages" [value]="lang.code" (click)="translateFrom(lang)">{{lang.lang}}</mat-radio-button>
+                        </mat-radio-group>
+      </mat-card>
+      
       <br>
-      <mat-radio-group>
-                  <mat-label> Översätt till</mat-label>
-                  <br>
-                  <mat-radio-button  *ngFor="let lang of languages" [value]="lang.code" (click)="translateTo(lang)">{{lang.lang}}</mat-radio-button>
-            </mat-radio-group>
+      <mat-card>
+                  <mat-radio-group>
+                              <mat-label> Översätt till</mat-label>
+                              <br>
+                              <mat-radio-button  *ngFor="let lang of languages" [value]="lang.code" (click)="translateTo(lang)">{{lang.lang}}</mat-radio-button>
+                        </mat-radio-group>
+      </mat-card>  
 <br>
       <button mat-raised-button color="primary" [disabled]="recording" (click)="startListen()">Get Voice</button>
       <button mat-raised-button [disabled]="!recording" (click)="stopListen()">Stop Voice</button>
