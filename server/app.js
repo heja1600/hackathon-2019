@@ -32,26 +32,35 @@ app.use(function (req, res, next) {
 });
 
 app.post("/post-message", (req, res, next) => {
-  var  msg = req.body;
-  console.log(JSON.stringify(msg));
-  msg = translateFunction(msg.message);
-  res.status(201).json({
-    // ändra message till nya tranlaten
-    message: msg
-    //message: 'Post added successfully'
-  });
-});
-
-function translateFunction(msg) {
-  translate(msg, { to: 'fr' }).then(res => {
-    console.log(res.text); // OUTPUT: You are amazing!
+  var msg = req.body;
+  console.log('sent word:', msg);
+  translate(msg.message, { to: 'fr' }).then(textRes => {
+    console.log('translated word:', textRes.text); 
+    res.status(201).json({
+      message: textRes.text
+    });
   }).catch(err => {
     console.error(err);
   });
-  console.log(msg);
-  return msg;
+});
+
+app.get("/", (req, res, next) => {
+  console.log('next');
+})
+
+function trans(msg, callback) {
+  console.log('trans msg', msg);
+  
 }
 
+function update(msg) {
+  console.log(' this is new message', msg);
+  app.get("/post-message", (req, res, next) => {
+    res.status(200).json({
+      message:  msg
+    });
+  });
+}
 app.use((req, res , next) => {
 
   res.sendFile(path.join(__dirname, "hackathon-2019", "index.html"));

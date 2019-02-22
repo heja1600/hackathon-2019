@@ -18,6 +18,8 @@ export class MainComponent implements OnInit {
   recordning = false;
   messageSub: Subscription;
   message: string;
+  translateSub: Subscription;
+  translateMsg = '';
   constructor(private vs: VoiceService, 
               private vts: VoiceTranslationService
               ) { }
@@ -26,6 +28,9 @@ export class MainComponent implements OnInit {
     this.messageSub = this.vs.messageChange.subscribe((value) => {
       this.message = value;
       this.vts.sendMessage(this.message);
+    })
+    this.translateSub = this.vts.translateMsgChange.subscribe((value) => {
+      this.translateMsg = this.translateMsg + value;
     })
   }
  startListen(): void {

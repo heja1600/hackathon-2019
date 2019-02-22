@@ -1,6 +1,10 @@
-<mat-card>
+
 
       <button mat-raised-button color="primary" [disabled]="recordning" (click)="startListen()">Get Voice</button>
       <button mat-raised-button  [disabled]="!recordning" (click)="stopListen()">Stop Voice</button>
       <button mat-raised-button  (click)="translate()">Translate</button>
-</mat-card>
+      <h2> {{translateMsg}}</h2>
+
+
+      
+      

@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container\" style=\"padding: 20px;\">\r\n  <app-main> </app-main>\r\n</div>\r\n\r\n\r\n"
+module.exports = "\n<div class=\"container\" style=\"padding: 20px;\">\n  <app-main> </app-main>\n</div>\n\n\n"
 
 /***/ }),
 
@@ -125,7 +125,8 @@ var AppModule = /** @class */ (function () {
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["BrowserAnimationsModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatButtonModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatGridListModule"]
             ],
             providers: [_kamiazya_ngx_speech_recognition__WEBPACK_IMPORTED_MODULE_9__["SpeechRecognitionService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
@@ -145,7 +146,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21haW4vbWFpbi5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "\r\n.left-div , .right-div {\r\n    padding:50px;\r\n    display: inline-block;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbi9tYWluLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBO0lBQ0ksWUFBWTtJQUNaLHFCQUFxQjtBQUN6QiIsImZpbGUiOiJzcmMvYXBwL21haW4vbWFpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbi5sZWZ0LWRpdiAsIC5yaWdodC1kaXYge1xyXG4gICAgcGFkZGluZzo1MHB4O1xyXG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -156,7 +157,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\r\n\r\n      <button mat-raised-button color=\"primary\" [disabled]=\"recordning\" (click)=\"startListen()\">Get Voice</button>\r\n      <button mat-raised-button  [disabled]=\"!recordning\" (click)=\"stopListen()\">Stop Voice</button>\r\n      <button mat-raised-button  (click)=\"translate()\">Translate</button>\r\n</mat-card>\r\n"
+module.exports = "\r\n\r\n      <button mat-raised-button color=\"primary\" [disabled]=\"recordning\" (click)=\"startListen()\">Get Voice</button>\r\n      <button mat-raised-button  [disabled]=\"!recordning\" (click)=\"stopListen()\">Stop Voice</button>\r\n      <button mat-raised-button  (click)=\"translate()\">Translate</button>\r\n      <h2> {{translateMsg}}</h2>\r\n\r\n\r\n      \r\n      "
 
 /***/ }),
 
@@ -185,12 +186,16 @@ var MainComponent = /** @class */ (function () {
         this.vs = vs;
         this.vts = vts;
         this.recordning = false;
+        this.translateMsg = '';
     }
     MainComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.messageSub = this.vs.messageChange.subscribe(function (value) {
             _this.message = value;
             _this.vts.sendMessage(_this.message);
+        });
+        this.translateSub = this.vts.translateMsgChange.subscribe(function (value) {
+            _this.translateMsg = _this.translateMsg + value;
         });
     };
     MainComponent.prototype.startListen = function () {
@@ -248,11 +253,9 @@ var VoiceService = /** @class */ (function () {
         this.message = '';
         this.messageChange = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.speachService.onstart = function (e) {
-            console.log('onstart');
         };
         this.speachService.onresult = function (e) {
             _this.message = e.results[0].item(0).transcript;
-            _this.messageChange.next(_this.message);
         };
     }
     VoiceService.prototype.start = function () {
@@ -260,6 +263,7 @@ var VoiceService = /** @class */ (function () {
     };
     VoiceService.prototype.stop = function () {
         this.speachService.stop();
+        this.messageChange.next(this.message);
     };
     VoiceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
@@ -285,20 +289,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
 
 
 
 var VoiceTranslationService = /** @class */ (function () {
     function VoiceTranslationService(httpClient) {
         this.httpClient = httpClient;
-        this.defaultLang = 'en';
+        this.translateMsgChange = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
     }
     VoiceTranslationService.prototype.exec = function () {
+        var _this = this;
         // skriv kod här
+        console.log('exec');
         var msg = 'Where are you';
         this.httpClient.post('http://localhost:3000/post-message', { message: msg })
             .subscribe(function (responsData) {
-            console.log(responsData.message);
+            _this.setMessage(responsData.message);
         });
     };
     VoiceTranslationService.prototype.translate = function (message) {
@@ -307,10 +315,15 @@ var VoiceTranslationService = /** @class */ (function () {
     VoiceTranslationService.prototype.switchLanguage = function (language) {
     };
     VoiceTranslationService.prototype.sendMessage = function (msg) {
+        var _this = this;
+        console.log('sendMessage');
         this.httpClient.post('http://localhost:3000/post-message', { message: msg })
             .subscribe(function (responsData) {
-            console.log(responsData.message);
+            _this.setMessage(responsData.message);
         });
+    };
+    VoiceTranslationService.prototype.setMessage = function (msg) {
+        this.translateMsgChange.next(msg);
     };
     VoiceTranslationService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
@@ -387,7 +400,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\william\Documents\gth\hackathon-2019\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Projects\hackathon-2019\src\main.ts */"./src/main.ts");
 
 
 /***/ })

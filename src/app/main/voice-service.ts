@@ -11,11 +11,9 @@ export class VoiceService {
     messageChange: Subject<string> = new Subject<string>();
     constructor(public speachService: SpeechRecognitionService) {
         this.speachService.onstart = (e) => {
-            console.log('onstart');
           };
           this.speachService.onresult = (e) => {
             this.message = e.results[0].item(0).transcript;
-            this.messageChange.next(this.message);
           };
     }
     start() {
@@ -23,6 +21,7 @@ export class VoiceService {
     }
     stop() {
         this.speachService.stop();
+        this.messageChange.next(this.message);
     }
     
 }
