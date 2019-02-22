@@ -1,4 +1,6 @@
 <mat-card>
-  <h1>{{hej}}</h1>
-  <button mat-button color="primary" (click)="func()" > "test"</button>
+
+      <button mat-raised-button color="primary" [disabled]="recordning" (click)="startListen()">Get Voice</button>
+      <button mat-raised-button  [disabled]="!recordning" (click)="stopListen()">Stop Voice</button>
+      <button mat-raised-button  (click)="translate()">Translate</button>
 </mat-card>
