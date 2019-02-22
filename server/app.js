@@ -29,7 +29,6 @@ app.use(function (req, res, next) {
 });
 
 app.post("/post-message", (req, res, next) => {
-  console.log(req);
   const msg = req.body;
   console.log(JSON.stringify(msg));
   res.status(201).json({
