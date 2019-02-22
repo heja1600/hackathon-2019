@@ -312,17 +312,14 @@ __webpack_require__.r(__webpack_exports__);
 var VoiceTranslationService = /** @class */ (function () {
     function VoiceTranslationService(httpClient) {
         this.httpClient = httpClient;
+        this.languageTo = 'en';
         this.translateMsgChange = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
     }
     VoiceTranslationService.prototype.exec = function () {
-        var _this = this;
         // skriv kod här
         console.log('exec');
         var msg = 'Where are you';
-        this.httpClient.post('http://localhost:3000/post-message', { message: msg })
-            .subscribe(function (responsData) {
-            _this.setMessage(responsData.message);
-        });
+        this.request(msg);
     };
     VoiceTranslationService.prototype.translate = function (message) {
         // kod för översättning från voice input
@@ -330,10 +327,19 @@ var VoiceTranslationService = /** @class */ (function () {
     VoiceTranslationService.prototype.switchLanguage = function (language) {
     };
     VoiceTranslationService.prototype.sendMessage = function (msg) {
-        var _this = this;
         console.log('sendMessage');
-        this.httpClient.post('http://localhost:3000/post-message', { message: msg })
+        this.request(msg);
+    };
+    VoiceTranslationService.prototype.request = function (msg) {
+        var _this = this;
+        this.httpClient.post('http://localhost:3000/post-message', { message: msg, to: this.languageTo })
             .subscribe(function (responsData) {
+            _this.to = responsData.to;
+            _this.from = responsData.from;
+            console.log('msg:', msg);
+            console.log('from:', _this.from);
+            console.log('msg', responsData.message);
+            console.log('to:', _this.to);
             _this.setMessage(responsData.message);
         });
     };
@@ -415,7 +421,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\william\Documents\gth\hackathon-2019\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Projects\hackathon-2019\src\main.ts */"./src/main.ts");
 
 
 /***/ })

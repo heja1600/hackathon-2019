@@ -34,11 +34,14 @@ app.use(function (req, res, next) {
 app.post("/post-message", (req, res, next) => {
   var msg = req.body;
   console.log('sent word:', msg);
-  translate(msg.message, { to: 'en' }).then(textRes => {
+  translate(msg.message, { to: msg.to }).then(textRes => {
     console.log(textRes);
     console.log('translated word:', textRes.text); 
+    console.log('from',textRes.from.language.iso );
     res.status(201).json({
-      message: textRes.text
+      message: textRes.text,
+      from: textRes.from.language.iso,
+      to: msg.to
     });
   }).catch(err => {
     console.error(err);
@@ -49,19 +52,7 @@ app.get("/", (req, res, next) => {
   console.log('next');
 })
 
-function trans(msg, callback) {
-  console.log('trans msg', msg);
-  
-}
 
-function update(msg) {
-  console.log(' this is new message', msg);
-  app.get("/post-message", (req, res, next) => {
-    res.status(200).json({
-      message:  msg
-    });
-  });
-}
 app.use((req, res , next) => {
 
   res.sendFile(path.join(__dirname, "hackathon-2019", "index.html"));
