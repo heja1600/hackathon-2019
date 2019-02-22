@@ -174,8 +174,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _voice_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./voice-service */ "./src/app/main/voice-service.ts");
-/* harmony import */ var _voice_translation_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./voice-translation-service */ "./src/app/main/voice-translation-service.ts");
-/* harmony import */ var _kamiazya_ngx_speech_recognition__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @kamiazya/ngx-speech-recognition */ "./node_modules/@kamiazya/ngx-speech-recognition/fesm5/kamiazya-ngx-speech-recognition.js");
+/* harmony import */ var speak_tts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! speak-tts */ "./node_modules/speak-tts/lib/speak-tts.js");
+/* harmony import */ var speak_tts__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(speak_tts__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _voice_translation_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./voice-translation-service */ "./src/app/main/voice-translation-service.ts");
+/* harmony import */ var _kamiazya_ngx_speech_recognition__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @kamiazya/ngx-speech-recognition */ "./node_modules/@kamiazya/ngx-speech-recognition/fesm5/kamiazya-ngx-speech-recognition.js");
+
 
 
 
@@ -196,7 +199,18 @@ var MainComponent = /** @class */ (function () {
         });
         this.translateSub = this.vts.translateMsgChange.subscribe(function (value) {
             _this.translateMsg = _this.translateMsg + value;
-            // här ska du läsa upp translateMsg
+            _this.sayText(_this.translateMsg);
+        });
+    };
+    MainComponent.prototype.sayText = function (msg) {
+        // här ska du läsa upp msg
+        var speech = new speak_tts__WEBPACK_IMPORTED_MODULE_3___default.a();
+        speech.speak({
+            text: msg,
+        }).then(function () {
+            console.log("Success !");
+        }).catch(function (e) {
+            console.error("An error occurred :", e);
         });
     };
     MainComponent.prototype.startListen = function () {
@@ -215,12 +229,12 @@ var MainComponent = /** @class */ (function () {
             selector: 'app-main',
             template: __webpack_require__(/*! ./main.component.html */ "./src/app/main/main.component.html"),
             providers: [_voice_service__WEBPACK_IMPORTED_MODULE_2__["VoiceService"],
-                _voice_translation_service__WEBPACK_IMPORTED_MODULE_3__["VoiceTranslationService"],
-                _kamiazya_ngx_speech_recognition__WEBPACK_IMPORTED_MODULE_4__["RxSpeechRecognitionService"]],
+                _voice_translation_service__WEBPACK_IMPORTED_MODULE_4__["VoiceTranslationService"],
+                _kamiazya_ngx_speech_recognition__WEBPACK_IMPORTED_MODULE_5__["RxSpeechRecognitionService"]],
             styles: [__webpack_require__(/*! ./main.component.css */ "./src/app/main/main.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_voice_service__WEBPACK_IMPORTED_MODULE_2__["VoiceService"],
-            _voice_translation_service__WEBPACK_IMPORTED_MODULE_3__["VoiceTranslationService"]])
+            _voice_translation_service__WEBPACK_IMPORTED_MODULE_4__["VoiceTranslationService"]])
     ], MainComponent);
     return MainComponent;
 }());
@@ -401,7 +415,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Projects\hackathon-2019\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\william\Documents\gth\hackathon-2019\src\main.ts */"./src/main.ts");
 
 
 /***/ })

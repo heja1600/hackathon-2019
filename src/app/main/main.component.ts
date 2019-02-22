@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VoiceService } from './voice-service';
+import Speech from 'speak-tts';
 import { VoiceTranslationService } from './voice-translation-service';
 import {
   RxSpeechRecognitionService
@@ -37,6 +38,14 @@ export class MainComponent implements OnInit {
   }
   private sayText(msg: string) {
     // här ska du läsa upp msg
+    const speech = new Speech();
+    speech.speak({
+      text: msg,
+      }).then(() => {
+      console.log("Success !")
+      }).catch(e => {
+      console.error("An error occurred :", e)
+      })
   }
  startListen(): void {
     this.recordning = true;

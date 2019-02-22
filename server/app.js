@@ -34,7 +34,8 @@ app.use(function (req, res, next) {
 app.post("/post-message", (req, res, next) => {
   var msg = req.body;
   console.log('sent word:', msg);
-  translate(msg.message, { to: 'fr' }).then(textRes => {
+  translate(msg.message, { to: 'en' }).then(textRes => {
+    console.log(textRes);
     console.log('translated word:', textRes.text); 
     res.status(201).json({
       message: textRes.text
