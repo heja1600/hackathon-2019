@@ -6,7 +6,7 @@ const bodyParser = require("body-parser")
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use("/", express.static(path.join(__dirname, "dynamic-form-angular")));
+app.use("/", express.static(path.join(__dirname, "hackathon-2019")));
 
 // Add headers
 app.use(function (req, res, next) {
