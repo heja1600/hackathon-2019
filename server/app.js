@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const {Translate} = require('@google-cloud/translate');
+const translate = require('@k3rn31p4nic/google-translate-api');
+
 console.log("SERVER IS ONLINE");
 const bodyParser = require("body-parser")
 app.use(bodyParser.json());
@@ -9,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/", express.static(path.join(__dirname, "hackathon-2019")));
 
+       
 // Add headers
 app.use(function (req, res, next) {
 
@@ -32,7 +34,7 @@ app.use(function (req, res, next) {
 app.post("/post-message", (req, res, next) => {
   var  msg = req.body;
   console.log(JSON.stringify(msg));
-  msg = translate(msg.message);
+  msg = translateFunction(msg.message);
   res.status(201).json({
     // ändra message till nya tranlaten
     message: msg
@@ -40,7 +42,12 @@ app.post("/post-message", (req, res, next) => {
   });
 });
 
-function translate(msg) {
+function translateFunction(msg) {
+  translate(msg, { to: 'fr' }).then(res => {
+    console.log(res.text); // OUTPUT: You are amazing!
+  }).catch(err => {
+    console.error(err);
+  });
   console.log(msg);
   return msg;
 }

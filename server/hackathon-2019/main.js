@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container\" style=\"padding: 20px;\">\n  <app-main> </app-main>\n</div>\n\n\n"
+module.exports = "\r\n<div class=\"container\" style=\"padding: 20px;\">\r\n  <app-main> </app-main>\r\n</div>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -156,7 +156,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\n\n      <button mat-raised-button color=\"primary\" [disabled]=\"recordning\" (click)=\"startListen()\">Get Voice</button>\n      <button mat-raised-button  [disabled]=\"!recordning\" (click)=\"stopListen()\">Stop Voice</button>\n      <button mat-raised-button  (click)=\"translate()\">Translate</button>\n</mat-card>\n"
+module.exports = "<mat-card>\r\n\r\n      <button mat-raised-button color=\"primary\" [disabled]=\"recordning\" (click)=\"startListen()\">Get Voice</button>\r\n      <button mat-raised-button  [disabled]=\"!recordning\" (click)=\"stopListen()\">Stop Voice</button>\r\n      <button mat-raised-button  (click)=\"translate()\">Translate</button>\r\n</mat-card>\r\n"
 
 /***/ }),
 
@@ -387,7 +387,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Projects\hackathon-2019\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\william\Documents\gth\hackathon-2019\src\main.ts */"./src/main.ts");
 
 
 /***/ })
