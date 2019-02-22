@@ -157,7 +157,11 @@ module.exports = "\r\n.left-div , .right-div {\r\n    padding:50px;\r\n    displ
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "\r\n\r\n      <button mat-raised-button color=\"primary\" [disabled]=\"recordning\" (click)=\"startListen()\">Get Voice</button>\r\n      <button mat-raised-button  [disabled]=\"!recordning\" (click)=\"stopListen()\">Stop Voice</button>\r\n      <button mat-raised-button  (click)=\"translate()\">Translate</button>\r\n      <h2> {{translateMsg}}</h2>\r\n\r\n\r\n      \r\n      "
+=======
+module.exports = "<mat-card>\r\n\r\n      <button mat-raised-button color=\"primary\" [disabled]=\"recordning\" (click)=\"startListen()\">Get Voice</button>\r\n      <button mat-raised-button [disabled]=\"!recordning\" (click)=\"stopListen()\">Stop Voice</button>\r\n      <button mat-raised-button (click)=\"translate()\">Translate</button>\r\n\r\n      <p>Operator side</p>\r\n\r\n      <div class=\"input-group\" id=\"textareaOperator\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">\r\nPlaceholder\r\n      </textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"translateButton\"\r\n                  onclick=\"textTranslate()\">Translate</span>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated text</p>\r\n\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\"></textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"synthesisSpeechButton\">Synthesis speech</span>\r\n      </div>\r\n</mat-card>"
+>>>>>>> 5ef5e94e25f0f28e1edc1045e8f9804d023c39b0
 
 /***/ }),
 
@@ -400,7 +404,11 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Projects\hackathon-2019\src\main.ts */"./src/main.ts");
+=======
+module.exports = __webpack_require__(/*! C:\Users\VanillaTea\Github\hackathon-2019\src\main.ts */"./src/main.ts");
+>>>>>>> 5ef5e94e25f0f28e1edc1045e8f9804d023c39b0
 
 
 /***/ })
