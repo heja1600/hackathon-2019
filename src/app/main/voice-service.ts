@@ -1,6 +1,8 @@
 import { SpeechRecognitionService } from '@kamiazya/ngx-speech-recognition';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 
 
 @Injectable()
@@ -22,4 +24,5 @@ export class VoiceService {
     stop() {
         this.speachService.stop();
     }
+    
 }

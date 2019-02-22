@@ -190,7 +190,7 @@ var MainComponent = /** @class */ (function () {
         var _this = this;
         this.messageSub = this.vs.messageChange.subscribe(function (value) {
             _this.message = value;
-            _this.vts.translate(_this.message);
+            _this.vts.sendMessage(_this.message);
         });
     };
     MainComponent.prototype.startListen = function () {
@@ -284,24 +284,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VoiceTranslationService", function() { return VoiceTranslationService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
 
 
 var VoiceTranslationService = /** @class */ (function () {
-    function VoiceTranslationService() {
+    function VoiceTranslationService(httpClient) {
+        this.httpClient = httpClient;
         this.defaultLang = 'en';
     }
     VoiceTranslationService.prototype.exec = function () {
         // skriv kod här
-        var message = "Where are you";
+        var msg = 'Where are you';
+        this.httpClient.post('http://localhost:3000/post-message', { message: msg })
+            .subscribe(function (responsData) {
+            console.log(responsData.message);
+        });
     };
     VoiceTranslationService.prototype.translate = function (message) {
         // kod för översättning från voice input
     };
     VoiceTranslationService.prototype.switchLanguage = function (language) {
     };
+    VoiceTranslationService.prototype.sendMessage = function (msg) {
+        this.httpClient.post('http://localhost:3000/post-message', { message: msg })
+            .subscribe(function (responsData) {
+            console.log(responsData.message);
+        });
+    };
     VoiceTranslationService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], VoiceTranslationService);
     return VoiceTranslationService;
 }());

@@ -25,7 +25,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.messageSub = this.vs.messageChange.subscribe((value) => {
       this.message = value;
-      this.vts.translate(this.message);
+      this.vts.sendMessage(this.message);
     })
   }
  startListen(): void {

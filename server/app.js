@@ -28,10 +28,12 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.post("/api/get-form", (req, res, next) => {
-  const post = req.body;
-  console.log(' post', JSON.stringify(post));
+app.post("/post-message", (req, res, next) => {
+  console.log(req);
+  const msg = req.body;
+  console.log(JSON.stringify(msg));
   res.status(201).json({
+    // ändra message till nya tranlaten
     message: 'Post added successfully'
   });
 });
