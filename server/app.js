@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const {Translate} = require('@google-cloud/translate');
 console.log("SERVER IS ONLINE");
 const bodyParser = require("body-parser")
 app.use(bodyParser.json());
@@ -29,15 +30,20 @@ app.use(function (req, res, next) {
 });
 
 app.post("/post-message", (req, res, next) => {
-  const msg = req.body;
+  var  msg = req.body;
   console.log(JSON.stringify(msg));
+  msg = translate(msg.message);
   res.status(201).json({
     // ändra message till nya tranlaten
-    message: 'Post added successfully'
+    message: msg
+    //message: 'Post added successfully'
   });
 });
 
-
+function translate(msg) {
+  console.log(msg);
+  return msg;
+}
 
 app.use((req, res , next) => {
 
