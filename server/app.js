@@ -37,7 +37,7 @@ app.post("/post-message", (req, res, next) => {
   translate(msg.message, { to: msg.to }).then(textRes => {
     console.log(textRes);
     console.log('translated word:', textRes.text); 
-    console.log('from',textRes.from.language.iso );
+    console.log('from', textRes.from.language.iso );
     res.status(201).json({
       message: textRes.text,
       from: textRes.from.language.iso,

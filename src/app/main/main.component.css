@@ -3,3 +3,12 @@
     padding:50px;
     display: inline-block;
 }
+.left-div {
+    width: 40%;
+    float: left;
+}
+
+.right-div{
+    width: 40%;
+    float: right;
+}

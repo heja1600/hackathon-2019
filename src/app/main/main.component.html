@@ -1,31 +1,49 @@
-
+<div class="left-div">
 
       <button mat-raised-button color="primary" [disabled]="recordning" (click)="startListen()">Get Voice</button>
-      <button mat-raised-button  [disabled]="!recordning" (click)="stopListen()">Stop Voice</button>
-      <button mat-raised-button  (click)="translate()">Translate</button>
-      <h2> {{translateMsg}}</h2>
-      
+      <button mat-raised-button [disabled]="!recordning" (click)="stopListen()">Stop Voice</button>
+      <button mat-raised-button (click)="translate()">Translate</button>
 
-      
-      
+      <p>Select input speech language</p>
+      <form id="inputLanagueRadio" action="">
+            <input type="radio" name="language" value="English" checked> English<br>
+            <input type="radio" name="language" value="Swedish"> Swedish<br>
+            <input type="radio" name="language" value="French">  French
+      </form>
+
+      <p>Raw speech-to-text</p>
+      <div class="input-group" id="textareaTranslated">
+            <textarea class="form-control custom-control" rows="3" style="resize:none">{{message}}</textarea>
+      </div>
+
+      <br>
+
+      <p>Translated speech</p>
+      <div class="input-group" id="textareaTranslated">
+            <textarea class="form-control custom-control" rows="3" style="resize:none">{{translateMsg}}</textarea>
+      </div>
+      <p>Select translated language</p>
+      <form id="translatedLanguageRadio" action="">
+            <input type="radio" name="language" value="English"> English<br>
+            <input type="radio" name="language" value="Swedish" checked> Swedish
+      </form>
+
+</div>
+
+<div class="right-div">
 
       <p>Operator side</p>
-
       <div class="input-group" id="textareaOperator">
-            <textarea class="form-control custom-control" rows="3" style="resize:none">
-Placeholder
-      </textarea>
-            <span class="input-group-addon btn btn-primary" id="translateButton"
-                  onclick="textTranslate()">Translate</span>
+            <textarea class="form-control custom-control" rows="3" style="resize:none">Placeholder</textarea>
+            <span class="input-group-addon btn btn-primary" id="translateButton" onclick="textTranslate()">Translate</span>
       </div>
 
       <br>
 
       <p>Translated text</p>
-
       <div class="input-group" id="textareaTranslated">
             <textarea class="form-control custom-control" rows="3" style="resize:none"></textarea>
             <span class="input-group-addon btn btn-primary" id="synthesisSpeechButton">Synthesis speech</span>
       </div>
 
-
+</div>

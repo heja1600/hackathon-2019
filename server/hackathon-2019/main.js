@@ -146,7 +146,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n.left-div , .right-div {\r\n    padding:50px;\r\n    display: inline-block;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbi9tYWluLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBO0lBQ0ksWUFBWTtJQUNaLHFCQUFxQjtBQUN6QiIsImZpbGUiOiJzcmMvYXBwL21haW4vbWFpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbi5sZWZ0LWRpdiAsIC5yaWdodC1kaXYge1xyXG4gICAgcGFkZGluZzo1MHB4O1xyXG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG59XHJcbiJdfQ== */"
+module.exports = "\r\n.left-div , .right-div {\r\n    padding:50px;\r\n    display: inline-block;\r\n}\r\n.left-div {\r\n    width: 40%;\r\n    float: left;\r\n}\r\n.right-div{\r\n    width: 40%;\r\n    float: right;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbi9tYWluLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBO0lBQ0ksWUFBWTtJQUNaLHFCQUFxQjtBQUN6QjtBQUNBO0lBQ0ksVUFBVTtJQUNWLFdBQVc7QUFDZjtBQUVBO0lBQ0ksVUFBVTtJQUNWLFlBQVk7QUFDaEIiLCJmaWxlIjoic3JjL2FwcC9tYWluL21haW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4ubGVmdC1kaXYgLCAucmlnaHQtZGl2IHtcclxuICAgIHBhZGRpbmc6NTBweDtcclxuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxufVxyXG4ubGVmdC1kaXYge1xyXG4gICAgd2lkdGg6IDQwJTtcclxuICAgIGZsb2F0OiBsZWZ0O1xyXG59XHJcblxyXG4ucmlnaHQtZGl2e1xyXG4gICAgd2lkdGg6IDQwJTtcclxuICAgIGZsb2F0OiByaWdodDtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -157,7 +157,7 @@ module.exports = "\r\n.left-div , .right-div {\r\n    padding:50px;\r\n    displ
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n      <button mat-raised-button color=\"primary\" [disabled]=\"recordning\" (click)=\"startListen()\">Get Voice</button>\r\n      <button mat-raised-button  [disabled]=\"!recordning\" (click)=\"stopListen()\">Stop Voice</button>\r\n      <button mat-raised-button  (click)=\"translate()\">Translate</button>\r\n      <h2> {{translateMsg}}</h2>\r\n      \r\n\r\n      \r\n      \r\n\r\n      <p>Operator side</p>\r\n\r\n      <div class=\"input-group\" id=\"textareaOperator\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">\r\nPlaceholder\r\n      </textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"translateButton\"\r\n                  onclick=\"textTranslate()\">Translate</span>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated text</p>\r\n\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\"></textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"synthesisSpeechButton\">Synthesis speech</span>\r\n      </div>\r\n\r\n\r\n"
+module.exports = "<div class=\"left-div\">\r\n\r\n      <button mat-raised-button color=\"primary\" [disabled]=\"recordning\" (click)=\"startListen()\">Get Voice</button>\r\n      <button mat-raised-button [disabled]=\"!recordning\" (click)=\"stopListen()\">Stop Voice</button>\r\n      <button mat-raised-button (click)=\"translate()\">Translate</button>\r\n\r\n      <p>Select input speech language</p>\r\n      <form id=\"inputLanagueRadio\" action=\"\">\r\n            <input type=\"radio\" name=\"language\" value=\"English\" checked> English<br>\r\n            <input type=\"radio\" name=\"language\" value=\"Swedish\"> Swedish<br>\r\n            <input type=\"radio\" name=\"language\" value=\"French\">  French\r\n      </form>\r\n\r\n      <p>Raw speech-to-text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">{{message}}</textarea>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated speech</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">{{translateMsg}}</textarea>\r\n      </div>\r\n      <p>Select translated language</p>\r\n      <form id=\"translatedLanguageRadio\" action=\"\">\r\n            <input type=\"radio\" name=\"language\" value=\"English\"> English<br>\r\n            <input type=\"radio\" name=\"language\" value=\"Swedish\" checked> Swedish\r\n      </form>\r\n\r\n</div>\r\n\r\n<div class=\"right-div\">\r\n\r\n      <p>Operator side</p>\r\n      <div class=\"input-group\" id=\"textareaOperator\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">Placeholder</textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"translateButton\" onclick=\"textTranslate()\">Translate</span>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\"></textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"synthesisSpeechButton\">Synthesis speech</span>\r\n      </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -312,14 +312,12 @@ __webpack_require__.r(__webpack_exports__);
 var VoiceTranslationService = /** @class */ (function () {
     function VoiceTranslationService(httpClient) {
         this.httpClient = httpClient;
-        this.languageTo = 'en';
+        this.languageTo = 'fr';
         this.translateMsgChange = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
     }
     VoiceTranslationService.prototype.exec = function () {
         // skriv kod här
         console.log('exec');
-        var msg = 'Where are you';
-        this.request(msg);
     };
     VoiceTranslationService.prototype.translate = function (message) {
         // kod för översättning från voice input
@@ -336,10 +334,10 @@ var VoiceTranslationService = /** @class */ (function () {
             .subscribe(function (responsData) {
             _this.to = responsData.to;
             _this.from = responsData.from;
-            console.log('msg:', msg);
-            console.log('from:', _this.from);
-            console.log('msg', responsData.message);
-            console.log('to:', _this.to);
+            console.log('Input message:', msg);
+            console.log('Input languague:', _this.from);
+            console.log('Output message', responsData.message);
+            console.log('Output language:', _this.to);
             _this.setMessage(responsData.message);
         });
     };
@@ -421,7 +419,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Projects\hackathon-2019\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\VanillaTea\Github\hackathon-2019\src\main.ts */"./src/main.ts");
 
 
 /***/ })

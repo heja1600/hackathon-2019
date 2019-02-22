@@ -9,7 +9,7 @@ export class VoiceTranslationService {
     message: string;
     to: string;
     from: string;
-    languageTo: string = 'en';
+    languageTo: string = 'fr';
     translateMsgChange: Subject<String> = new Subject<String>();
     constructor(private httpClient: HttpClient) {
 
@@ -17,8 +17,6 @@ export class VoiceTranslationService {
     exec() {
         // skriv kod här
         console.log('exec');
-        const msg = 'Where are you';
-        this.request(msg);
 
     }
     translate(message: string) {
@@ -39,11 +37,10 @@ export class VoiceTranslationService {
         .subscribe((responsData)=> {
             this.to = responsData.to;
             this.from = responsData.from;
-            console.log('msg:', msg);
-            console.log('from:', this.from);
-            console.log('msg', responsData.message);
-            console.log('to:', this.to);
-            
+            console.log('Input message:', msg);
+            console.log('Input languague:', this.from);
+            console.log('Output message', responsData.message);
+            console.log('Output language:', this.to);
             
             this.setMessage(responsData.message);
         })
