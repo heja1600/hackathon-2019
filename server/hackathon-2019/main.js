@@ -121,12 +121,15 @@ var AppModule = /** @class */ (function () {
                 _main_main_component__WEBPACK_IMPORTED_MODULE_6__["MainComponent"]
             ],
             imports: [
+                _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatInputModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatCardModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["BrowserAnimationsModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatButtonModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatGridListModule"]
+                _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatGridListModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatRadioModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_7__["MatExpansionModule"]
             ],
             providers: [_kamiazya_ngx_speech_recognition__WEBPACK_IMPORTED_MODULE_9__["SpeechRecognitionService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
@@ -157,7 +160,7 @@ module.exports = "\r\n.left-div , .right-div {\r\n    padding:50px;\r\n    displ
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"left-div\">\r\n\r\n      <button mat-raised-button color=\"primary\" [disabled]=\"recordning\" (click)=\"startListen()\">Get Voice</button>\r\n      <button mat-raised-button [disabled]=\"!recordning\" (click)=\"stopListen()\">Stop Voice</button>\r\n      <button mat-raised-button (click)=\"translate()\">Translate</button>\r\n\r\n      <p>Select input speech language</p>\r\n      <form id=\"inputLanagueRadio\" action=\"\">\r\n            <input type=\"radio\" name=\"language\" value=\"English\" checked> English<br>\r\n            <input type=\"radio\" name=\"language\" value=\"Swedish\"> Swedish<br>\r\n            <input type=\"radio\" name=\"language\" value=\"French\">  French\r\n      </form>\r\n\r\n      <p>Raw speech-to-text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">{{message}}</textarea>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated speech</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">{{translateMsg}}</textarea>\r\n      </div>\r\n      <p>Select translated language</p>\r\n      <form id=\"translatedLanguageRadio\" action=\"\">\r\n            <input type=\"radio\" name=\"language\" value=\"English\"> English<br>\r\n            <input type=\"radio\" name=\"language\" value=\"Swedish\" checked> Swedish\r\n      </form>\r\n\r\n</div>\r\n\r\n<div class=\"right-div\">\r\n\r\n      <p>Operator side</p>\r\n      <div class=\"input-group\" id=\"textareaOperator\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">Placeholder</textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"translateButton\" onclick=\"textTranslate()\">Translate</span>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\"></textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"synthesisSpeechButton\">Synthesis speech</span>\r\n      </div>\r\n\r\n</div>"
+module.exports = "<div class=\"left-div\">\r\n      <mat-radio-group>\r\n            <mat-label> Översätt från</mat-label>\r\n            <br>\r\n            <mat-radio-button  *ngFor=\"let lang of languages\" [value]=\"lang.code\" (click)=\"translateFrom(lang)\">{{lang.lang}}</mat-radio-button>\r\n      </mat-radio-group>\r\n      <br>\r\n      <mat-radio-group>\r\n                  <mat-label> Översätt till</mat-label>\r\n                  <br>\r\n                  <mat-radio-button  *ngFor=\"let lang of languages\" [value]=\"lang.code\" (click)=\"translateTo(lang)\">{{lang.lang}}</mat-radio-button>\r\n            </mat-radio-group>\r\n<br>\r\n      <button mat-raised-button color=\"primary\" [disabled]=\"recording\" (click)=\"startListen()\">Get Voice</button>\r\n      <button mat-raised-button [disabled]=\"!recording\" (click)=\"stopListen()\">Stop Voice</button>\r\n      <button mat-raised-button (click)=\"translate()\">Translate</button>\r\n\r\n      <div class=\"container\">\r\n            <h5> Voice Input</h5> <p> {{message}}</p>\r\n            <div [@answerAnim]=\"anim\">\r\n            <h5> Translated Voice</h5>  <p>{{trans}}</p>\r\n            <h2>dawdawdawd</h2>\r\n            </div>\r\n      </div>\r\n<!--\r\n   <p>Raw speech-to-text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">{{message}}</textarea>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated speech</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">{{translateMsg}}</textarea>\r\n      </div>\r\n      <p>Select translated language</p>\r\n     \r\n\r\n</div>\r\n\r\n<div class=\"right-div\">\r\n\r\n      <p>Operator side</p>\r\n      <div class=\"input-group\" id=\"textareaOperator\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">Placeholder</textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"translateButton\" onclick=\"textTranslate()\">Translate</span>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\"></textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"synthesisSpeechButton\">Synthesis speech</span>\r\n      </div>\r\n\r\n</div>\r\n-->\r\n   "
 
 /***/ }),
 
@@ -178,6 +181,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var speak_tts__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(speak_tts__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _voice_translation_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./voice-translation-service */ "./src/app/main/voice-translation-service.ts");
 /* harmony import */ var _kamiazya_ngx_speech_recognition__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @kamiazya/ngx-speech-recognition */ "./node_modules/@kamiazya/ngx-speech-recognition/fesm5/kamiazya-ngx-speech-recognition.js");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
+
 
 
 
@@ -188,8 +193,14 @@ var MainComponent = /** @class */ (function () {
     function MainComponent(vs, vts) {
         this.vs = vs;
         this.vts = vts;
-        this.recordning = false;
-        this.translateMsg = '';
+        this.languages = [
+            { lang: 'Svenska', code: 'sv' },
+            { lang: 'Engelska', code: 'en-GB' },
+            { lang: 'Tyska', code: 'de-DE' },
+            { lang: 'Franska', code: 'fr-FR' },
+        ];
+        this.recording = false;
+        this.anim = 'inactive';
     }
     MainComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -198,7 +209,7 @@ var MainComponent = /** @class */ (function () {
             _this.vts.sendMessage(_this.message);
         });
         this.translateSub = this.vts.translateMsgChange.subscribe(function (value) {
-            _this.translateMsg = _this.translateMsg + value;
+            _this.translateMsg = value;
             _this.sayText(_this.translateMsg);
         });
     };
@@ -214,15 +225,18 @@ var MainComponent = /** @class */ (function () {
         });
     };
     MainComponent.prototype.startListen = function () {
-        this.recordning = true;
+        this.recording = true;
         this.vs.start();
     };
     MainComponent.prototype.stopListen = function () {
-        this.recordning = false;
+        this.recording = false;
         this.vs.stop();
     };
     MainComponent.prototype.translate = function () {
         this.vts.exec();
+    };
+    MainComponent.prototype.translateFrom = function (lang) {
+        this.vs.setLanguage(lang);
     };
     MainComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -231,6 +245,15 @@ var MainComponent = /** @class */ (function () {
             providers: [_voice_service__WEBPACK_IMPORTED_MODULE_2__["VoiceService"],
                 _voice_translation_service__WEBPACK_IMPORTED_MODULE_4__["VoiceTranslationService"],
                 _kamiazya_ngx_speech_recognition__WEBPACK_IMPORTED_MODULE_5__["RxSpeechRecognitionService"]],
+            animations: [
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["trigger"])('answerAnim', [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('active', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({})),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('inactive', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({})),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["transition"])('inactive <=> active', [
+                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["animate"])('0.2s')
+                    ])
+                ])
+            ],
             styles: [__webpack_require__(/*! ./main.component.css */ "./src/app/main/main.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_voice_service__WEBPACK_IMPORTED_MODULE_2__["VoiceService"],
@@ -262,23 +285,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var VoiceService = /** @class */ (function () {
-    function VoiceService(speachService) {
+    function VoiceService(ss) {
         var _this = this;
-        this.speachService = speachService;
+        this.ss = ss;
         this.message = '';
+        this.language = { lang: 'Svenska', code: 'sv-SE' };
         this.messageChange = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
-        this.speachService.onstart = function (e) {
+        this.ss.onstart = function (e) {
         };
-        this.speachService.onresult = function (e) {
+        this.ss.onresult = function (e) {
             _this.message = e.results[0].item(0).transcript;
+            _this.messageChange.next(_this.message);
         };
     }
     VoiceService.prototype.start = function () {
-        this.speachService.start();
+        console.log('start', this.language);
+        this.ss.lang = this.language.code;
+        this.ss.start();
     };
     VoiceService.prototype.stop = function () {
-        this.speachService.stop();
-        this.messageChange.next(this.message);
+        this.ss.stop();
+    };
+    VoiceService.prototype.setLanguage = function (lang) {
+        console.log(lang);
+        this.language = lang;
     };
     VoiceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
@@ -318,6 +348,7 @@ var VoiceTranslationService = /** @class */ (function () {
     VoiceTranslationService.prototype.exec = function () {
         // skriv kod här
         console.log('exec');
+        this.request("hej mitt namn är herman");
     };
     VoiceTranslationService.prototype.translate = function (message) {
         // kod för översättning från voice input
@@ -419,7 +450,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\VanillaTea\Github\hackathon-2019\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Projects\hackathon-2019\src\main.ts */"./src/main.ts");
 
 
 /***/ })

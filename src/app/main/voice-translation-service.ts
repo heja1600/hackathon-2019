@@ -10,13 +10,14 @@ export class VoiceTranslationService {
     to: string;
     from: string;
     languageTo: string = 'fr';
-    translateMsgChange: Subject<String> = new Subject<String>();
+    translateMsgChange: Subject<string> = new Subject<string>();
     constructor(private httpClient: HttpClient) {
 
     }
     exec() {
         // skriv kod här
         console.log('exec');
+        this.request("hej mitt namn är herman");
 
     }
     translate(message: string) {

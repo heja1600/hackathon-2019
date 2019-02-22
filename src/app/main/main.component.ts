@@ -7,20 +7,44 @@ import {
 } from '@kamiazya/ngx-speech-recognition';
 import { Subscription } from 'rxjs';
 import { Translator } from 'angular-translator';
+import { Language } from '../shared/language';
+import { trigger, style, state, animate, transition } from '@angular/animations';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
   providers: [VoiceService,
      VoiceTranslationService,
-      RxSpeechRecognitionService]
+      RxSpeechRecognitionService],
+  animations: [
+    trigger('answerAnim', [
+      state('active', style({
+
+      })),
+      state('inactive', style({
+
+      })),
+      transition('inactive <=> active', [
+        animate('0.2s')
+      ])
+    ])
+  ]
 })
+
+
 export class MainComponent implements OnInit {
-  recordning = false;
+  languages: Language[] = [
+    {lang:'Svenska', code: 'sv'},
+    {lang:'Engelska', code: 'en-GB'},
+    {lang:'Tyska', code: 'de-DE'},
+    {lang:'Franska', code: 'fr-FR'},
+  ];
+  recording = false;
+  anim = 'inactive';
   messageSub: Subscription;
   message: string;
   translateSub: Subscription;
-  translateMsg = '';
+  translateMsg: string;
   constructor(private vs: VoiceService, 
               private vts: VoiceTranslationService
               ) { }
@@ -30,11 +54,9 @@ export class MainComponent implements OnInit {
       this.message = value;
       this.vts.sendMessage(this.message);
     })
-
     this.translateSub = this.vts.translateMsgChange.subscribe((value) => {
-      this.translateMsg = this.translateMsg + value;
+      this.translateMsg = value;
       this.sayText(this.translateMsg);
-      
     })
   }
   private sayText(msg: string) {
@@ -49,14 +71,17 @@ export class MainComponent implements OnInit {
       })
   }
  startListen(): void {
-    this.recordning = true;
+    this.recording = true;
     this.vs.start();
   }
   stopListen(): void {
-    this.recordning = false;
+    this.recording = false;
     this.vs.stop();
   }
   translate(): void {
     this.vts.exec();
+  }
+  translateFrom(lang: Language) {
+    this.vs.setLanguage(lang);
   }
 }

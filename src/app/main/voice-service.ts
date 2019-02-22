@@ -2,26 +2,35 @@ import { SpeechRecognitionService } from '@kamiazya/ngx-speech-recognition';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Language } from '../shared/language';
+
 
 
 
 @Injectable()
 export class VoiceService {
     message = '';
+    language: Language = {lang: 'Svenska', code: 'sv-SE'};
     messageChange: Subject<string> = new Subject<string>();
-    constructor(public speachService: SpeechRecognitionService) {
-        this.speachService.onstart = (e) => {
+    constructor(public ss: SpeechRecognitionService) {
+        this.ss.onstart = (e) => {
           };
-          this.speachService.onresult = (e) => {
+          this.ss.onresult = (e) => {
             this.message = e.results[0].item(0).transcript;
+            this.messageChange.next(this.message);
           };
     }
     start() {
-        this.speachService.start();
+        console.log('start', this.language);
+        this.ss.lang = this.language.code;
+        this.ss.start();
     }
     stop() {
-        this.speachService.stop();
-        this.messageChange.next(this.message);
+        this.ss.stop();
+        
     }
-    
+    setLanguage(lang: Language) {
+        console.log(lang);
+        this.language = lang;
+    }
 }

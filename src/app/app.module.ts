@@ -4,7 +4,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
-import { MatCardModule, MatButtonModule, MatGridListModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatGridListModule, MatRadioGroup, MatRadioButton, MatRadioModule, MatExpansionModule, MatLabel, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RxSpeechRecognitionService, SpeechRecognitionService } from '@kamiazya/ngx-speech-recognition';
 export function HttpLoaderFactory(http: HttpClient) {
@@ -16,12 +16,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainComponent
   ],
   imports: [
+    MatInputModule,
     MatCardModule,  
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
     HttpClientModule,
-    MatGridListModule
+    MatGridListModule,
+    MatRadioModule,
+    MatExpansionModule
   ],
   providers: [SpeechRecognitionService],
   bootstrap: [AppComponent]
