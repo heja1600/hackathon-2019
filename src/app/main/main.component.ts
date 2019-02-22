@@ -31,6 +31,7 @@ export class MainComponent implements OnInit {
     })
     this.translateSub = this.vts.translateMsgChange.subscribe((value) => {
       this.translateMsg = this.translateMsg + value;
+      // här ska du läsa upp translateMsg
     })
   }
  startListen(): void {
