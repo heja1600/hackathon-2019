@@ -76,12 +76,19 @@ export class MainComponent implements OnInit {
   }
   stopListen(): void {
     this.recording = false;
-    this.vs.stop();
+    this.delay(3000).then(any=>{
+      this.vs.stop();
+ });
+
   }
   translate(): void {
     this.vts.exec();
   }
   translateFrom(lang: Language) {
     this.vs.setLanguage(lang);
+  }
+  //Pause
+  async delay(ms: number) {
+    await new Promise(resolve => setTimeout(()=>resolve(), ms)).then(()=>console.log("Pause for 3000ms"));
   }
 }
