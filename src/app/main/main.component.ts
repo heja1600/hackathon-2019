@@ -42,9 +42,9 @@ export class MainComponent implements OnInit {
   recording = false;
   anim = 'inactive';
   messageSub: Subscription;
-  message: string;
+  message: string = '';
   translateSub: Subscription;
-  translateMsg: string;
+  translateMsg: string = '';
   constructor(private vs: VoiceService, 
               private vts: VoiceTranslationService
               ) { }
