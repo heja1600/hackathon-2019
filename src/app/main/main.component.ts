@@ -22,8 +22,7 @@ import { trigger, style, state, animate, transition } from '@angular/animations'
 
       })),
       state('inactive', style({
-        height: '0px',
-        overflow: 'hidden'
+
       })),
       transition('inactive <=> active', [
         animate('0.2s')
@@ -57,7 +56,7 @@ export class MainComponent implements OnInit {
     })
     this.translateSub = this.vts.translateMsgChange.subscribe((value) => {
       this.translateMsg = value;
-      this.anim =  'active';
+
       this.sayText(this.translateMsg);
     })
   }
@@ -78,7 +77,7 @@ export class MainComponent implements OnInit {
   }
   stopListen(): void {
     this.recording = false;
-    this.delay(1100).then(any=>{
+    this.delay(3000).then(any=>{
       this.vs.stop();
  });
 

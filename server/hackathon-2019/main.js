@@ -211,7 +211,6 @@ var MainComponent = /** @class */ (function () {
         });
         this.translateSub = this.vts.translateMsgChange.subscribe(function (value) {
             _this.translateMsg = value;
-            _this.anim = 'active';
             _this.sayText(_this.translateMsg);
         });
     };
@@ -233,7 +232,7 @@ var MainComponent = /** @class */ (function () {
     MainComponent.prototype.stopListen = function () {
         var _this = this;
         this.recording = false;
-        this.delay(1100).then(function (any) {
+        this.delay(3000).then(function (any) {
             _this.vs.stop();
         });
     };
@@ -269,10 +268,7 @@ var MainComponent = /** @class */ (function () {
             animations: [
                 Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["trigger"])('answerAnim', [
                     Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('active', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({})),
-                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('inactive', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({
-                        height: '0px',
-                        overflow: 'hidden'
-                    })),
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["state"])('inactive', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["style"])({})),
                     Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["transition"])('inactive <=> active', [
                         Object(_angular_animations__WEBPACK_IMPORTED_MODULE_6__["animate"])('0.2s')
                     ])
