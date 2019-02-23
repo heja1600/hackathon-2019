@@ -216,12 +216,12 @@ var MainComponent = /** @class */ (function () {
     MainComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.messageSub = this.vs.messageChange.subscribe(function (value) {
-            _this.message = value;
+            _this.message += value;
             _this.vts.sendMessage(_this.message);
         });
         this.translateSub = this.vts.translateMsgChange.subscribe(function (value) {
             _this.translateMsg = value;
-            _this.sayText(_this.translateMsg);
+            //this.sayText(this.translateMsg);
         });
     };
     MainComponent.prototype.sayText = function (msg) {
@@ -257,7 +257,7 @@ var MainComponent = /** @class */ (function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, new Promise(function (resolve) { return setTimeout(function () { return resolve(); }, ms); }).then(function () { return console.log("Pause for 3000ms"); })];
+                    case 0: return [4 /*yield*/, new Promise(function (resolve) { return setTimeout(function () { return resolve(); }, ms); }).then(function () { return console.log("Pause for", ms, "ms"); })];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -325,6 +325,9 @@ var VoiceService = /** @class */ (function () {
         this.ss.onaudiostart = function (e) {
             console.log('hej');
         };
+        this.ss.onend = function (e) {
+            _this.start();
+        };
     }
     VoiceService.prototype.start = function () {
         console.log('start', this.language);
@@ -379,9 +382,8 @@ var VoiceTranslationService = /** @class */ (function () {
     VoiceTranslationService.prototype.translate = function (message) {
         // kod för översättning från voice input
     };
-    VoiceTranslationService.prototype.setLanguage = function (code) {
-        console.log(code);
-        switch (code) {
+    VoiceTranslationService.prototype.setLanguage = function (language) {
+        switch (language.code) {
             case 'sv-SE':
                 this.languageTo = 'sv';
                 break;
@@ -393,27 +395,6 @@ var VoiceTranslationService = /** @class */ (function () {
                 break;
             case 'fr-FR':
                 this.languageTo = 'fr';
-                break;
-            case 'af-ZA':
-                this.languageTo = 'af';
-                break;
-            case 'es-ES':
-                this.languageTo = 'es';
-                break;
-            case 'it-IT':
-                this.languageTo = 'it';
-                break;
-            case 'ru-RU':
-                this.languageTo = 'ru';
-                break;
-            case 'fi-FI':
-                this.languageTo = 'fi';
-                break;
-            case 'pl-PL':
-                this.languageTo = 'pl';
-                break;
-            case 'is-IS':
-                this.languageTo = 'is';
                 break;
         }
     };
@@ -512,7 +493,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\william\Documents\gth\hackathon-2019\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\VanillaTea\Github\hackathon-2019\src\main.ts */"./src/main.ts");
 
 
 /***/ })
