@@ -366,8 +366,16 @@ var VoiceService = /** @class */ (function () {
         this.ss.start();
     };
     VoiceService.prototype.stop = function () {
+        var _this = this;
         this.isRecording = false;
-        this.ss.stop();
+        if (this.message.length > 0) {
+            this.ss.stop();
+        }
+        else {
+            setTimeout(function () {
+                _this.stop();
+            }, 100);
+        }
     };
     VoiceService.prototype.setLanguage = function (lang) {
         console.log(lang);

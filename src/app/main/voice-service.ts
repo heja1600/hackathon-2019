@@ -34,7 +34,14 @@ export class VoiceService {
     }
     stop() {
         this.isRecording = false;
-        this.ss.stop();
+        if(this.message.length > 0) {
+            this.ss.stop();
+        } else {
+            setTimeout(() => {
+                this.stop();
+            }, 100);
+        }
+
     }
     setLanguage(lang: Language) {
         console.log(lang);
