@@ -20,6 +20,9 @@ export class VoiceService {
           this.ss.onaudiostart = (e) => {
               console.log('hej');
           }
+          this.ss.onend = (e) => {
+              this.start();
+          }
     }
     start() {
         console.log('start', this.language);

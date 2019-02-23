@@ -27,8 +27,8 @@
       </mat-form-field >
 
 <br>
-      <button style="padding:20px" mat-raised-button color="primary" [disabled]="recording" (click)="startListen()">Get Voice</button>
-      <button style="padding:20px" mat-raised-button color="warn"[disabled]="!recording" (click)="stopListen()">Stop Voice</button>
+      <button style="padding:20px" mat-raised-button color="primary" [disabled]="recording" (click)="startListen()">Get Voice <mat-icon>phone</mat-icon></button>
+      <button style="padding:20px" mat-raised-button color="warn"[disabled]="!recording" (click)="stopListen()">Stop Voice<mat-icon>phone_missed</mat-icon></button>
       <button style="padding:20px" mat-raised-button (click)="wordinput.click()">Translate</button>
 <br>
 <br>
@@ -37,11 +37,13 @@
                   <input [value]="message" matInput placeholder="Placeholder">
                 </mat-form-field>
                 <br>
-      <mat-form-field appearance="outline" style="width: 100%">
+</div>
+<div class="right-div">
+      <mat-form-field appearance="outline" style="width: 100%" class="temp">
                         <mat-label>Translated Output</mat-label>
-                        <input [value]="translateMsg"matInput placeholder="Placeholder">
+                        <textarea [value]="test"matInput placeholder="Placeholder"></textarea>
                       </mat-form-field>
-  
+                  </div>
 <!--
           <div class="container">
                  

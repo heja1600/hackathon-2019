@@ -51,6 +51,7 @@ export class MainComponent implements OnInit {
   anim = 'inactive';
   messageSub: Subscription;
   message: string = '';
+  test: string = '';
   translateSub: Subscription;
   translateMsg: string = '';
   constructor(private vs: VoiceService, 
@@ -63,8 +64,9 @@ export class MainComponent implements OnInit {
       this.vts.sendMessage(this.message);
     })
     this.translateSub = this.vts.translateMsgChange.subscribe((value) => {
+      this.test = this.test + " " + value;
       this.translateMsg = value;
-
+      
       this.sayText(this.translateMsg);
     })
   }
