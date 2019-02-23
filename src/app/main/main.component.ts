@@ -54,9 +54,10 @@ export class MainComponent implements OnInit {
   message: string = '';
   //Input message detected language
   detectedLanguage: string = '';
+  detectedLanguageSub: Subscription;
   //Translated input message
   typeSub: Subscription;
-  typeMsg: string;
+  typeMsg: string = '';
   translateSub: Subscription;
   translateMsg: string = '';
   //Translated operator message
@@ -70,19 +71,28 @@ export class MainComponent implements OnInit {
     this.messageSub = this.vs.messageChange.subscribe((value) => {
       this.message += value;
       this.vts.sendMessage(this.message);
-    })
+    });
     this.translateSub = this.vts.translateMsgChange.subscribe((value) => {
       this.translateMsg  = this.translateMsg + " " + value;
       
       //this.sayText(this.translateMsg);
-    })
+    });
     this.typeSub = this.vts.typeChange.subscribe((value) => {
       this.typeMsg = value;
       console.log('typeSub', value);
+    });
+    this.detectedLanguageSub = this.vts.detectChange.subscribe((value)=> {
+      this.detectedLanguage = value.toLocaleUpperCase();
+      console.log(value);
+      this.vts.setLanguage(value);
     })
 
   }
+  test(event: any) {
+    console.log('dwadaw', event);
+  }
   sayText(event: any) {
+    console.log('sayText');
     if(event.srcElement.value !== undefined &&
        event.srcElement.value !== null) {
          let msg = event.srcElement.value;

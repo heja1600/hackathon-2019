@@ -11,6 +11,7 @@ export class VoiceTranslationService {
     to: string;
     from: string;
     languageTo: string;
+    detectChange: Subject<string> = new Subject<string>();
     translateMsgChange: Subject<string> = new Subject<string>();
     typeChange: Subject<string> = new Subject<string>();
     constructor(private httpClient: HttpClient) {
@@ -28,6 +29,10 @@ export class VoiceTranslationService {
     }
 
     setLanguage(code: string) {
+        if(code.length < 3) {
+            this.languageTo = code;
+            return;
+        }
         console.log(code);
         switch(code) {
             case 'sv-SE':
@@ -86,8 +91,9 @@ export class VoiceTranslationService {
             console.log('Input languague:', this.from);
             console.log('Output message', responsData.message);
             console.log('Output language:', this.to);
-            document.getElementById('detectedLanguage').innerText = this.from;
+            // document.getElementById('detectedLanguage').innerText = this.from;
             this.setMessage(responsData.message);
+            this.detectChange.next(this.from);
         })
     }
     //Translate swe text to user language

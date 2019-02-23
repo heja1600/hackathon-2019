@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container\" style=\"padding: 20px;\">\r\n  <app-main> </app-main>\r\n</div>\r\n\r\n\r\n"
+module.exports = "\r\n<div class=\"container\" style=\"padding: 20px;\">\r\n\r\n      <app-main> </app-main>\r\n\r\n\r\n</div>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -163,7 +163,7 @@ module.exports = "\r\n.left-div {\r\n    float: left;\r\n    width: 45%;\r\n}\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"left-div\">\r\n\r\n\r\n      <br>\r\n\r\n      <!-- Output To Language -->\r\n      <mat-card>\r\n            <mat-form-field>\r\n                  <mat-label> Översätt till</mat-label>\r\n                  <br>\r\n                  <mat-select style=\"width:100%;\" matNativeControl (selectionChange)=\"translateTo($event)\">\r\n                        <mat-option *ngFor=\"let lang of languages\" [value]=\"lang.code\">{{lang.lang}}</mat-option>\r\n                  </mat-select>\r\n            </mat-form-field>\r\n      </mat-card>\r\n      <br>\r\n\r\n      <!-- Manual text field-->\r\n      <!--\r\n      <mat-form-field style=\"width: 100%\">\r\n            <input matInput placeholder=\"Skriv ord\" (click)=\"wordInput($event)\" #wordinput>\r\n      </mat-form-field>\r\n      -->\r\n\r\n      <br>\r\n\r\n      <!-- Buttons -->\r\n      <button style=\"padding:5px\" mat-raised-button color=\"primary\" [disabled]=\"recording\" (click)=\"startListen()\">Get\r\n            Voice <mat-icon>phone</mat-icon></button>\r\n      <button style=\"padding:5px; float:right\" mat-raised-button color=\"warn\" [disabled]=\"!recording\" (click)=\"stopListen()\">Stop\r\n            Voice<mat-icon>phone_missed</mat-icon></button>\r\n      <!--\r\n      <button style=\"padding:20px\" mat-raised-button (click)=\"wordinput.click()\">Translate</button>\r\n                  -->\r\n      <br>\r\n      <br>\r\n\r\n      <!-- Input Voice-->\r\n      <p>Detected language: </p>\r\n      <p id=\"detectedLanguage\"></p>\r\n      <mat-form-field appearance=\"outline\" style=\"width: 100%\">\r\n            <mat-label>Voice Input</mat-label>\r\n            <input [value]=\"message\" matInput>\r\n      </mat-form-field>\r\n      <br>\r\n\r\n      <!-- Input Voice Translated-->\r\n      <mat-form-field appearance=\"outline\" style=\"width: 100%\" class=\"temp\">\r\n            <mat-label>Translated Output</mat-label>\r\n            <textarea [value]=\"translateMsg\" matInput></textarea>\r\n      </mat-form-field>\r\n</div>\r\n\r\n<div class=\"right-div\">\r\n\r\n      <p>Operator side</p>\r\n      <div class=\"input-group\" id=\"textareaOperator\">\r\n            <textarea id=\"textareaOperatorId\" class=\"form-control custom-control\" #inputWord (click)=\"wordInputText($event)\"rows=\"3\" value=\"\" style=\"resize:none\"></textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"translateButton\" (click)=\"inputWord.click()\">Translate</span>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea [value]=\"typeMsg\" id=\"textareaTranslatedId\" class=\"form-control custom-control\" #say (click)=\"sayText($event)\" rows=\"3\" style=\"resize:none\"></textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"synthesisSpeechButton\" (click)=\"say.click()\">Synthesis speech</span>\r\n      </div>\r\n\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n<!--\r\n          <div class=\"container\">\r\n                 \r\n            <h5> Voice Input</h5>\r\n            <textarea class=\"form-control custom-control input-group\" rows=\"3\" style=\"resize:none\">{{message}}</textarea>\r\n            <div [@answerAnim]=\"anim\">\r\n            <h5> Translated Voice</h5>\r\n            <textarea class=\"form-control custom-control input-group\" rows=\"3\" style=\"resize:none\">{{translateMsg}}</textarea>\r\n            </div>\r\n      </div>\r\n   <p>Raw speech-to-text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">{{message}}</textarea>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated speech</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">{{translateMsg}}</textarea>\r\n      </div>\r\n      <p>Select translated language</p>\r\n     \r\n\r\n</div>\r\n-->\r\n<!-- Input From Language -->\r\n<!--\r\n      <mat-card>\r\n            <mat-form-field>\r\n                  <mat-label> Översätt från</mat-label>\r\n                  <br>\r\n                  <mat-select style=\"width:100%;\" matNativeControl (selectionChange)=\"translateTo($event)\">\r\n                        <mat-option *ngFor=\"let lang of languages\" [value]=\"lang.code\">{{lang.lang}}</mat-option>\r\n                  </mat-select>\r\n\r\n            </mat-form-field>\r\n      </mat-card>\r\n      -->\r\n<!--\r\n\r\n\r\n<div class=\"right-div\">\r\n\r\n      <p>Operator side</p>\r\n      <div class=\"input-group\" id=\"textareaOperator\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">Placeholder</textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"translateButton\" onclick=\"textTranslate()\">Translate</span>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\"></textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"synthesisSpeechButton\">Synthesis speech</span>\r\n      </div>\r\n\r\n</div>\r\n-->"
+module.exports = "<div class=\"left-div\">\r\n\r\n\r\n      <br>\r\n\r\n      <!-- Output To Language -->\r\n      <mat-card>\r\n            <mat-form-field>\r\n                  <mat-label> Översätt till</mat-label>\r\n                  <br>\r\n                  <mat-select style=\"width:100%;\" matNativeControl (selectionChange)=\"translateTo($event)\">\r\n                        <mat-option *ngFor=\"let lang of languages\" [value]=\"lang.code\">{{lang.lang}}</mat-option>\r\n                  </mat-select>\r\n            </mat-form-field>\r\n      </mat-card>\r\n      <br>\r\n\r\n      <!-- Manual text field-->\r\n      <!--\r\n      <mat-form-field style=\"width: 100%\">\r\n            <input matInput placeholder=\"Skriv ord\" (click)=\"wordInput($event)\" #wordinput>\r\n      </mat-form-field>\r\n      -->\r\n\r\n      <br>\r\n\r\n      <!-- Buttons -->\r\n      <button style=\"padding:5px;width: 45%;\" mat-raised-button color=\"primary\" [disabled]=\"recording\" (click)=\"startListen()\">Get\r\n            Voice <mat-icon>phone</mat-icon></button>\r\n      <button style=\"padding:5px;width: 45%; float:right\" mat-raised-button color=\"warn\" [disabled]=\"!recording\" (click)=\"stopListen()\">Stop\r\n            Voice<mat-icon>phone_missed</mat-icon></button>\r\n      <!--\r\n      <button style=\"padding:20px\" mat-raised-button (click)=\"wordinput.click()\">Translate</button>\r\n                  -->\r\n      <br>\r\n      <br>\r\n\r\n      <!-- Input Voice-->\r\n      <!-- \r\n<p>Detected language: </p>\r\n      <p id=\"detectedLanguage\"></p>\r\n      -->\r\n      <mat-form-field appearance=\"outline\" style=\"width: 100%\">\r\n            <mat-label>Voice Input</mat-label>\r\n            <input [disabled]=\"true\" [value]=\"message\" matInput>\r\n      </mat-form-field>\r\n      <br>\r\n\r\n      <!-- Input Voice Translated-->\r\n      <mat-form-field appearance=\"outline\" style=\"width: 100%\" class=\"temp\">\r\n            <mat-label>Translated Output</mat-label>\r\n            <textarea disabled [value]=\"translateMsg\" matInput></textarea>\r\n      </mat-form-field>\r\n</div>\r\n\r\n<div class=\"right-div\">\r\n\r\n      <p>Operator side</p>\r\n      <div class=\"input-group\" id=\"textareaOperator\">\r\n            <textarea id=\"textareaOperatorId\" class=\"form-control custom-control\" #inputWord (click)=\"wordInputText($event)\"rows=\"3\" value=\"\" style=\"resize:none\"></textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"translateButton\" (click)=\"inputWord.click()\"><mat-icon>g_translate</mat-icon></span>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\" >\r\n            <textarea [value]=\"typeMsg\" id=\"textareaTranslatedId\" class=\"form-control custom-control\" #say (click)=\"sayText($event)\" rows=\"3\" style=\"resize:none\"></textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"synthesisSpeechButton\" (click)=\"say.click()\"><mat-icon>volume_up</mat-icon></span>\r\n            <textarea  disabled [value]=\"detectedLanguage\" style=\"width: 60px\"  class=\"form-control custom-control\"  rows=\"3\"></textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" ><mat-icon>language</mat-icon></span>\r\n           \r\n      </div>\r\n\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n<!--\r\n          <div class=\"container\">\r\n                 \r\n            <h5> Voice Input</h5>\r\n            <textarea class=\"form-control custom-control input-group\" rows=\"3\" style=\"resize:none\">{{message}}</textarea>\r\n            <div [@answerAnim]=\"anim\">\r\n            <h5> Translated Voice</h5>\r\n            <textarea class=\"form-control custom-control input-group\" rows=\"3\" style=\"resize:none\">{{translateMsg}}</textarea>\r\n            </div>\r\n      </div>\r\n   <p>Raw speech-to-text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">{{message}}</textarea>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated speech</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">{{translateMsg}}</textarea>\r\n      </div>\r\n      <p>Select translated language</p>\r\n     \r\n\r\n</div>\r\n-->\r\n<!-- Input From Language -->\r\n<!--\r\n      <mat-card>\r\n            <mat-form-field>\r\n                  <mat-label> Översätt från</mat-label>\r\n                  <br>\r\n                  <mat-select style=\"width:100%;\" matNativeControl (selectionChange)=\"translateTo($event)\">\r\n                        <mat-option *ngFor=\"let lang of languages\" [value]=\"lang.code\">{{lang.lang}}</mat-option>\r\n                  </mat-select>\r\n\r\n            </mat-form-field>\r\n      </mat-card>\r\n      -->\r\n<!--\r\n\r\n\r\n<div class=\"right-div\">\r\n\r\n      <p>Operator side</p>\r\n      <div class=\"input-group\" id=\"textareaOperator\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\">Placeholder</textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"translateButton\" onclick=\"textTranslate()\">Translate</span>\r\n      </div>\r\n\r\n      <br>\r\n\r\n      <p>Translated text</p>\r\n      <div class=\"input-group\" id=\"textareaTranslated\">\r\n            <textarea class=\"form-control custom-control\" rows=\"3\" style=\"resize:none\"></textarea>\r\n            <span class=\"input-group-addon btn btn-primary\" id=\"synthesisSpeechButton\">Synthesis speech</span>\r\n      </div>\r\n\r\n</div>\r\n-->"
 
 /***/ }),
 
@@ -214,6 +214,7 @@ var MainComponent = /** @class */ (function () {
         this.message = '';
         //Input message detected language
         this.detectedLanguage = '';
+        this.typeMsg = '';
         this.translateMsg = '';
         this.translatedOperatorMsg = '';
     }
@@ -231,8 +232,17 @@ var MainComponent = /** @class */ (function () {
             _this.typeMsg = value;
             console.log('typeSub', value);
         });
+        this.detectedLanguageSub = this.vts.detectChange.subscribe(function (value) {
+            _this.detectedLanguage = value.toLocaleUpperCase();
+            console.log(value);
+            _this.vts.setLanguage(value);
+        });
+    };
+    MainComponent.prototype.test = function (event) {
+        console.log('dwadaw', event);
     };
     MainComponent.prototype.sayText = function (event) {
+        console.log('sayText');
         if (event.srcElement.value !== undefined &&
             event.srcElement.value !== null) {
             var msg = event.srcElement.value;
@@ -395,6 +405,7 @@ __webpack_require__.r(__webpack_exports__);
 var VoiceTranslationService = /** @class */ (function () {
     function VoiceTranslationService(httpClient) {
         this.httpClient = httpClient;
+        this.detectChange = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.translateMsgChange = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.typeChange = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
     }
@@ -408,6 +419,10 @@ var VoiceTranslationService = /** @class */ (function () {
         // kod för översättning från voice input
     };
     VoiceTranslationService.prototype.setLanguage = function (code) {
+        if (code.length < 3) {
+            this.languageTo = code;
+            return;
+        }
         console.log(code);
         switch (code) {
             case 'sv-SE':
@@ -465,8 +480,9 @@ var VoiceTranslationService = /** @class */ (function () {
             console.log('Input languague:', _this.from);
             console.log('Output message', responsData.message);
             console.log('Output language:', _this.to);
-            document.getElementById('detectedLanguage').innerText = _this.from;
+            // document.getElementById('detectedLanguage').innerText = this.from;
             _this.setMessage(responsData.message);
+            _this.detectChange.next(_this.from);
         });
     };
     //Translate swe text to user language

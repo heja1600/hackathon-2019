@@ -25,9 +25,9 @@
       <br>
 
       <!-- Buttons -->
-      <button style="padding:5px" mat-raised-button color="primary" [disabled]="recording" (click)="startListen()">Get
+      <button style="padding:5px;width: 45%;" mat-raised-button color="primary" [disabled]="recording" (click)="startListen()">Get
             Voice <mat-icon>phone</mat-icon></button>
-      <button style="padding:5px; float:right" mat-raised-button color="warn" [disabled]="!recording" (click)="stopListen()">Stop
+      <button style="padding:5px;width: 45%; float:right" mat-raised-button color="warn" [disabled]="!recording" (click)="stopListen()">Stop
             Voice<mat-icon>phone_missed</mat-icon></button>
       <!--
       <button style="padding:20px" mat-raised-button (click)="wordinput.click()">Translate</button>
@@ -36,18 +36,20 @@
       <br>
 
       <!-- Input Voice-->
-      <p>Detected language: </p>
+      <!-- 
+<p>Detected language: </p>
       <p id="detectedLanguage"></p>
+      -->
       <mat-form-field appearance="outline" style="width: 100%">
             <mat-label>Voice Input</mat-label>
-            <input [value]="message" matInput>
+            <input [disabled]="true" [value]="message" matInput>
       </mat-form-field>
       <br>
 
       <!-- Input Voice Translated-->
       <mat-form-field appearance="outline" style="width: 100%" class="temp">
             <mat-label>Translated Output</mat-label>
-            <textarea [value]="translateMsg" matInput></textarea>
+            <textarea disabled [value]="translateMsg" matInput></textarea>
       </mat-form-field>
 </div>
 
@@ -56,15 +58,18 @@
       <p>Operator side</p>
       <div class="input-group" id="textareaOperator">
             <textarea id="textareaOperatorId" class="form-control custom-control" #inputWord (click)="wordInputText($event)"rows="3" value="" style="resize:none"></textarea>
-            <span class="input-group-addon btn btn-primary" id="translateButton" (click)="inputWord.click()">Translate</span>
+            <span class="input-group-addon btn btn-primary" id="translateButton" (click)="inputWord.click()"><mat-icon>g_translate</mat-icon></span>
       </div>
 
       <br>
 
       <p>Translated text</p>
-      <div class="input-group" id="textareaTranslated">
+      <div class="input-group" id="textareaTranslated" >
             <textarea [value]="typeMsg" id="textareaTranslatedId" class="form-control custom-control" #say (click)="sayText($event)" rows="3" style="resize:none"></textarea>
-            <span class="input-group-addon btn btn-primary" id="synthesisSpeechButton" (click)="say.click()">Synthesis speech</span>
+            <span class="input-group-addon btn btn-primary" id="synthesisSpeechButton" (click)="say.click()"><mat-icon>volume_up</mat-icon></span>
+            <textarea  disabled [value]="detectedLanguage" style="width: 60px"  class="form-control custom-control"  rows="3"></textarea>
+            <span class="input-group-addon btn btn-primary" ><mat-icon>language</mat-icon></span>
+           
       </div>
 
 </div>
