@@ -47,4 +47,5 @@ export class VoiceService {
         console.log(lang);
         this.language = lang;
     }
+    
 }

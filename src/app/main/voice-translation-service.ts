@@ -10,6 +10,7 @@ export class VoiceTranslationService {
     message: string;
     to: string;
     from: string;
+    languageFrom: string;
     languageTo: string;
     detectChange: Subject<string> = new Subject<string>();
     translateMsgChange: Subject<string> = new Subject<string>();
@@ -17,17 +18,13 @@ export class VoiceTranslationService {
     constructor(private httpClient: HttpClient) {
 
     }
-    exec(msg: string) {
-        this.request(msg);
-    }
     execText(msg: string) {
-        this.requestText(msg);
+        this.requestOperator(msg);
     }
     translate(message: string) {
        
         // kod för översättning från voice input
     }
-
     setLanguage(code: string) {
         if(code.length < 3) {
             this.languageTo = code;
@@ -70,17 +67,59 @@ export class VoiceTranslationService {
             break;
         }
     }
+    setFromLanguage(code: string) {
+        if(code.length < 3) {
+            this.languageFrom = code;
+            return;
+        }
+        console.log(code);
+        switch(code) {
+            case 'sv-SE':
+                this.languageFrom = 'sv';
+            break;
+            case 'en-GB': 
+                this.languageFrom = 'en';
+            break;
+            case 'de-DE': 
+                this.languageFrom = 'de';
+            break;
+            case 'fr-FR': 
+                this.languageFrom = 'fr';
+            break;
+            case 'af-ZA':
+                this.languageFrom = 'af';
+            break;
+            case 'es-ES':
+                this.languageFrom = 'es';
+            break;
+            case 'it-IT':
+                this.languageFrom = 'it';
+            break;
+            case 'ru-RU':
+                this.languageFrom = 'ru';
+            break;
+            case 'fi-FI':
+                this.languageFrom = 'fi';
+            break;
+            case 'pl-PL':
+                this.languageFrom = 'pl';
+            break;
+            case 'is-IS':
+                this.languageFrom = 'is';
+            break;
+        }
+    }
     sendMessage(msg: string) {
         console.log('sendMessage');
-        this.request(msg);
+        this.requestClient(msg);
         
     }
     sendMessageText(msg: string) {
         console.log('sendMessageText');
-        this.requestText(msg);
+        this.requestOperator(msg);
         
     }
-    request(msg: string) {
+    requestClient(msg: string) {
         console.log("request");
         console.log("msg: ", msg);
         this.httpClient.post<{message: string, to: string, from: string}>('http://localhost:3000/post-message', {message: msg, to:this.languageTo})
@@ -97,12 +136,12 @@ export class VoiceTranslationService {
         })
     }
     //Translate swe text to user language
-    requestText(msg: string) {
+    requestOperator(msg: string) {
         console.log("requestText");
         console.log("msg:", msg);
         // this.from = 'sv';
         // this.languageTo = document.getElementById('detectedLanguage').innerText;
-        this.httpClient.post<{message: string, to: string, from: string}>('http://localhost:3000/post-message', {message: msg, to:this.languageTo})
+        this.httpClient.post<{message: string, to: string, from: string}>('http://localhost:3000/post-message', {message: msg, to:this.languageFrom})
         .subscribe((responsData)=> {
             this.to = responsData.to;
             this.from = responsData.from;

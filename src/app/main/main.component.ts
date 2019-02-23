@@ -56,12 +56,14 @@ export class MainComponent implements OnInit {
   detectedLanguage: string = '';
   detectedLanguageSub: Subscription;
   //Translated input message
+  savedLang: Language;
   typeSub: Subscription;
   typeMsg: string = '';
   translateSub: Subscription;
   translateMsg: string = '';
   //Translated operator message
   translatedOperatorSub: Subscription;
+  msgLog = '';
   translatedOperatorMsg: string = '';
   constructor(private vs: VoiceService, 
               private vts: VoiceTranslationService
@@ -69,11 +71,13 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.messageSub = this.vs.messageChange.subscribe((value) => {
-      this.message += value;
+      this.message = value;
       this.vts.sendMessage(this.message);
+
     });
     this.translateSub = this.vts.translateMsgChange.subscribe((value) => {
-      this.translateMsg  = this.translateMsg + " " + value;
+      this.translateMsg  =  value;
+      this.msgLog +="\n" +value;
       
       //this.sayText(this.translateMsg);
     });
@@ -84,7 +88,7 @@ export class MainComponent implements OnInit {
     this.detectedLanguageSub = this.vts.detectChange.subscribe((value)=> {
       this.detectedLanguage = value.toLocaleUpperCase();
       console.log(value);
-      this.vts.setLanguage(value);
+      this.vts.setFromLanguage(value);
     })
 
   }
@@ -116,15 +120,13 @@ export class MainComponent implements OnInit {
     this.recording = false;
     this.vs.stop();
   }
-  wordInput(event: any) {
-    this.vts.exec(event.srcElement.value);
-  }
   wordInputText(msg) {
     if(msg !== null && msg !== undefined ) {
       this.vts.execText(msg.srcElement.value);
     }
   }
   translateTo(event: any) {
+    this.savedLang = event.value;
     this.vts.setLanguage(event.value);
   }
   translateFrom(lang: Language) {
