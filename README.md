@@ -7,3 +7,11 @@ Winning project of Good Tech hack 2019 in sweden. 24 hours programming, rules : 
 
 
 Translation between emergency calls using 3 libraries
+
+Angular application for frontend communicating with nodejs server where translation librarie ('@k3rn31p4nic/google-translate-api') is used.
+In the front end "SpeechRecognitionService" and "Speech-tts" is used for speech recognition and audio ouput from string
+
+
+#### RUN 
+
+npm run dev // type this command in git bash in the folder, and download all missing libraries using npm install "module"
