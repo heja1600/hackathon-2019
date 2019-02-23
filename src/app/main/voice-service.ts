@@ -6,10 +6,10 @@ import { Language } from '../shared/language';
 
 
 
-
 @Injectable()
 export class VoiceService {
     message = '';
+    isRecording = false;
     language: Language = {lang: 'Svenska', code: 'sv-SE'};
     messageChange: Subject<string> = new Subject<string>();
     constructor(public ss: SpeechRecognitionService) {
@@ -21,15 +21,19 @@ export class VoiceService {
               console.log('hej');
           }
           this.ss.onend = (e) => {
-              this.start();
-          }
+              if(this.isRecording){
+                this.start();
+              }
+        }
     }
     start() {
         console.log('start', this.language);
+        this.isRecording = true;
         this.ss.lang = this.language.code;
         this.ss.start();
     }
     stop() {
+        this.isRecording = false;
         this.ss.stop();
     }
     setLanguage(lang: Language) {

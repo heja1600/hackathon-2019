@@ -218,13 +218,13 @@ var MainComponent = /** @class */ (function () {
     MainComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.messageSub = this.vs.messageChange.subscribe(function (value) {
-            _this.message = value;
+            _this.message += value;
             _this.vts.sendMessage(_this.message);
         });
         this.translateSub = this.vts.translateMsgChange.subscribe(function (value) {
             _this.test = _this.test + " " + value;
             _this.translateMsg = value;
-            _this.sayText(_this.translateMsg);
+            //this.sayText(this.translateMsg);
         });
     };
     MainComponent.prototype.sayText = function (msg) {
@@ -260,7 +260,7 @@ var MainComponent = /** @class */ (function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, new Promise(function (resolve) { return setTimeout(function () { return resolve(); }, ms); }).then(function () { return console.log("Pause for 3000ms"); })];
+                    case 0: return [4 /*yield*/, new Promise(function (resolve) { return setTimeout(function () { return resolve(); }, ms); }).then(function () { return console.log("Pause for", ms, "ms"); })];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -319,6 +319,7 @@ var VoiceService = /** @class */ (function () {
         var _this = this;
         this.ss = ss;
         this.message = '';
+        this.isRecording = false;
         this.language = { lang: 'Svenska', code: 'sv-SE' };
         this.messageChange = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.ss.onresult = function (e) {
@@ -329,15 +330,23 @@ var VoiceService = /** @class */ (function () {
             console.log('hej');
         };
         this.ss.onend = function (e) {
+<<<<<<< HEAD
             _this.start();
+=======
+            if (_this.isRecording) {
+                _this.start();
+            }
+>>>>>>> 3f3c4e0126c4c702089714bdc8474c5f169b63b0
         };
     }
     VoiceService.prototype.start = function () {
         console.log('start', this.language);
+        this.isRecording = true;
         this.ss.lang = this.language.code;
         this.ss.start();
     };
     VoiceService.prototype.stop = function () {
+        this.isRecording = false;
         this.ss.stop();
     };
     VoiceService.prototype.setLanguage = function (lang) {
@@ -518,7 +527,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\william\Documents\gth\hackathon-2019\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\VanillaTea\Github\hackathon-2019\src\main.ts */"./src/main.ts");
 
 
 /***/ })

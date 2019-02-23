@@ -60,14 +60,19 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.messageSub = this.vs.messageChange.subscribe((value) => {
-      this.message = value;
+      this.message += value;
       this.vts.sendMessage(this.message);
     })
     this.translateSub = this.vts.translateMsgChange.subscribe((value) => {
       this.test = this.test + " " + value;
       this.translateMsg = value;
+<<<<<<< HEAD
       
       this.sayText(this.translateMsg);
+=======
+
+      //this.sayText(this.translateMsg);
+>>>>>>> 3f3c4e0126c4c702089714bdc8474c5f169b63b0
     })
   }
   private sayText(msg: string) {
@@ -100,6 +105,6 @@ export class MainComponent implements OnInit {
   }
   //Pause
   async delay(ms: number) {
-    await new Promise(resolve => setTimeout(()=>resolve(), ms)).then(()=>console.log("Pause for 3000ms"));
+    await new Promise(resolve => setTimeout(()=>resolve(), ms)).then(()=>console.log("Pause for", ms, "ms"));
   }
 }
