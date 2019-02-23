@@ -1,49 +1,78 @@
 <div class="left-div">
-      <mat-card>
-                  <mat-radio-group>
-                              <mat-label> Översätt från</mat-label>
-                              <br>
-                              <span *ngFor="let lang of languages; let i = index"> 
-                                    <mat-radio-button *ngIf="i == 0 || i == 1"  [value]="lang.code" (click)="translateFrom(lang)">{{lang.lang}}</mat-radio-button>
-                     
-                              </span>
-                                 </mat-radio-group>
-      </mat-card>
-      
-      <br>
-      <mat-card>
-                  <mat-form-field>
-                              <mat-label> Översätt till</mat-label>
-                              <br>
-                              <mat-select style="width:100%;" matNativeControl (selectionChange)="translateTo($event)">
-                                    <mat-option *ngFor="let lang of languages" [value]="lang.code" >{{lang.lang}}</mat-option>
-                              </mat-select>
-                              <!--<mat-radio-button  *ngFor="let lang of languages" [value]="lang.code" (click)="translateTo(lang)">{{lang.lang}}</mat-radio-button>-->
-                        </mat-form-field>
-      </mat-card>  
-      <br>
-      <mat-form-field style="width: 100%">
-                  <input  matInput placeholder="Skriv ord" (click)="wordInput($event)" #wordinput >
-      </mat-form-field >
 
-<br>
-      <button style="padding:20px" mat-raised-button color="primary" [disabled]="recording" (click)="startListen()">Get Voice <mat-icon>phone</mat-icon></button>
-      <button style="padding:20px" mat-raised-button color="warn"[disabled]="!recording" (click)="stopListen()">Stop Voice<mat-icon>phone_missed</mat-icon></button>
+
+      <br>
+
+      <!-- Output To Language -->
+      <mat-card>
+            <mat-form-field>
+                  <mat-label> Översätt till</mat-label>
+                  <br>
+                  <mat-select style="width:100%;" matNativeControl (selectionChange)="translateTo($event)">
+                        <mat-option *ngFor="let lang of languages" [value]="lang.code">{{lang.lang}}</mat-option>
+                  </mat-select>
+            </mat-form-field>
+      </mat-card>
+      <br>
+
+      <!-- Manual text field-->
+      <!--
+      <mat-form-field style="width: 100%">
+            <input matInput placeholder="Skriv ord" (click)="wordInput($event)" #wordinput>
+      </mat-form-field>
+      -->
+
+      <br>
+
+      <!-- Buttons -->
+      <button style="padding:20px" mat-raised-button color="primary" [disabled]="recording" (click)="startListen()">Get
+            Voice <mat-icon>phone</mat-icon></button>
+      <button style="padding:20px" mat-raised-button color="warn" [disabled]="!recording" (click)="stopListen()">Stop
+            Voice<mat-icon>phone_missed</mat-icon></button>
+      <!--
       <button style="padding:20px" mat-raised-button (click)="wordinput.click()">Translate</button>
-<br>
-<br>
+                  -->
+      <br>
+      <br>
+
+      <!-- Input Voice-->
+      <p>Detected language: </p>
+      <p id="detectedLanguage"></p>
       <mat-form-field appearance="outline" style="width: 100%">
-                  <mat-label>Voice Input</mat-label>
-                  <input [value]="message" matInput placeholder="Placeholder">
-                </mat-form-field>
-                <br>
-</div>
-<div class="right-div">
+            <mat-label>Voice Input</mat-label>
+            <input [value]="message" matInput>
+      </mat-form-field>
+      <br>
+
+      <!-- Input Voice Translated-->
       <mat-form-field appearance="outline" style="width: 100%" class="temp">
-                        <mat-label>Translated Output</mat-label>
-                        <textarea [value]="test"matInput placeholder="Placeholder"></textarea>
-                      </mat-form-field>
-                  </div>
+            <mat-label>Translated Output</mat-label>
+            <textarea [value]="translateMsg" matInput></textarea>
+      </mat-form-field>
+</div>
+
+<div class="right-div">
+
+      <p>Operator side</p>
+      <div class="input-group" id="textareaOperator">
+            <textarea id="textareaOperatorId" class="form-control custom-control" rows="3" style="resize:none"></textarea>
+            <span class="input-group-addon btn btn-primary" id="translateButton" (click)="wordInputText()">Translate</span>
+      </div>
+
+      <br>
+
+      <p>Translated text</p>
+      <div class="input-group" id="textareaTranslated">
+            <textarea id="textareaTranslatedId" class="form-control custom-control" rows="3" style="resize:none"></textarea>
+            <span class="input-group-addon btn btn-primary" id="synthesisSpeechButton" (click)="func()">Synthesis speech</span>
+      </div>
+
+</div>
+
+
+
+
+
 <!--
           <div class="container">
                  
@@ -69,6 +98,22 @@
      
 
 </div>
+-->
+<!-- Input From Language -->
+<!--
+      <mat-card>
+            <mat-form-field>
+                  <mat-label> Översätt från</mat-label>
+                  <br>
+                  <mat-select style="width:100%;" matNativeControl (selectionChange)="translateTo($event)">
+                        <mat-option *ngFor="let lang of languages" [value]="lang.code">{{lang.lang}}</mat-option>
+                  </mat-select>
+
+            </mat-form-field>
+      </mat-card>
+      -->
+<!--
+
 
 <div class="right-div">
 
@@ -88,4 +133,3 @@
 
 </div>
 -->
-   

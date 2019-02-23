@@ -1,22 +1,10 @@
 
 .left-div {
-    padding:50px;
-    display: inline-block;
+    float: left;
+    width: 45%;
 }
 
 .right-div {
-    
-    padding:50px;
-    display: inline-block;
-}
-
-mat-radio-group {
-    display: inline-flex;
-    flex-direction: column;
-}
-
-.temp mat-form-field {
-   padding:50px;
-   margin-left:10000px;
-   display: block;
+    float: right;
+    width: 45%;
 }

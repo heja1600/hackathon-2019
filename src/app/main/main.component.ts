@@ -49,9 +49,12 @@ export class MainComponent implements OnInit {
   ];
   recording = false;
   anim = 'inactive';
+  //Input message
   messageSub: Subscription;
   message: string = '';
-  test: string = '';
+  //Input message detected language
+  detectedLanguage: string = '';
+  //Translated input message
   translateSub: Subscription;
   translateMsg: string = '';
   constructor(private vs: VoiceService, 
@@ -64,10 +67,9 @@ export class MainComponent implements OnInit {
       this.vts.sendMessage(this.message);
     })
     this.translateSub = this.vts.translateMsgChange.subscribe((value) => {
-      this.test = this.test + " " + value;
-      this.translateMsg = value;
+      this.translateMsg  = this.translateMsg + " " + value;
       
-      this.sayText(this.translateMsg);
+      //this.sayText(this.translateMsg);
     })
   }
   private sayText(msg: string) {
@@ -91,6 +93,10 @@ export class MainComponent implements OnInit {
   }
   wordInput(event: any) {
     this.vts.exec(event.srcElement.value);
+  }
+  wordInputText(msg) {
+    console.log("wordInputText msg:", msg);
+    this.vts.execText(msg);
   }
   translateTo(event: any) {
     this.vts.setLanguage(event.value);
