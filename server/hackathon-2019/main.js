@@ -215,6 +215,7 @@ var MainComponent = /** @class */ (function () {
         //Input message detected language
         this.detectedLanguage = '';
         this.translateMsg = '';
+        this.translatedOperatorMsg = '';
     }
     MainComponent.prototype.ngOnInit = function () {
         var _this = this;

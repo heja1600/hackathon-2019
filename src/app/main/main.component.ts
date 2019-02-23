@@ -57,6 +57,9 @@ export class MainComponent implements OnInit {
   //Translated input message
   translateSub: Subscription;
   translateMsg: string = '';
+  //Translated operator message
+  translatedOperatorSub: Subscription;
+  translatedOperatorMsg: string = '';
   constructor(private vs: VoiceService, 
               private vts: VoiceTranslationService
               ) { }
@@ -71,6 +74,7 @@ export class MainComponent implements OnInit {
       
       //this.sayText(this.translateMsg);
     })
+
   }
   private sayText(msg: string) {
     // här ska du läsa upp msg
