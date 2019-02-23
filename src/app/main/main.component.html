@@ -80,7 +80,7 @@
       <div class="input-group" id="textareaTranslated" >
             <textarea [value]="typeMsg" id="textareaTranslatedId" class="form-control custom-control" #say (click)="sayText($event)" rows="3" style="resize:none"></textarea>
             <span class="input-group-addon btn btn-primary" id="synthesisSpeechButton" (click)="say.click()"><mat-icon>volume_up</mat-icon></span>
-            <textarea  disabled [value]="detectedLanguage" style="width: 60px"  class="form-control custom-control"  rows="3"></textarea>
+            <textarea  disabled [value]="detectedLanguage" style="width: 60px"  class="form-control custom-control" style="resize:none" rows="3"></textarea>
             <span class="input-group-addon btn btn-primary" ><mat-icon>language</mat-icon></span>
            
       </div>
