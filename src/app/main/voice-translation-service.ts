@@ -12,6 +12,7 @@ export class VoiceTranslationService {
     from: string;
     languageTo: string;
     translateMsgChange: Subject<string> = new Subject<string>();
+    typeChange: Subject<string> = new Subject<string>();
     constructor(private httpClient: HttpClient) {
 
     }
@@ -93,8 +94,8 @@ export class VoiceTranslationService {
     requestText(msg: string) {
         console.log("requestText");
         console.log("msg:", msg);
-        this.from = 'sv';
-        this.languageTo = document.getElementById('detectedLanguage').innerText;
+        // this.from = 'sv';
+        // this.languageTo = document.getElementById('detectedLanguage').innerText;
         this.httpClient.post<{message: string, to: string, from: string}>('http://localhost:3000/post-message', {message: msg, to:this.languageTo})
         .subscribe((responsData)=> {
             this.to = responsData.to;
@@ -103,7 +104,9 @@ export class VoiceTranslationService {
             console.log('Input languague:', this.from);
             console.log('Output message', responsData.message);
             console.log('Output language:', this.to);
-            document.getElementById('textareaTranslatedI d').innerText = responsData.message;
+            
+            this.typeChange.next(responsData.message);
+            // document.getElementById('textareaTranslatedI d').innerText = responsData.message;
         })
     }
     setMessage(msg: string) {

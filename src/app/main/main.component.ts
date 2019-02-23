@@ -55,6 +55,8 @@ export class MainComponent implements OnInit {
   //Input message detected language
   detectedLanguage: string = '';
   //Translated input message
+  typeSub: Subscription;
+  typeMsg: string;
   translateSub: Subscription;
   translateMsg: string = '';
   //Translated operator message
@@ -74,18 +76,27 @@ export class MainComponent implements OnInit {
       
       //this.sayText(this.translateMsg);
     })
+    this.typeSub = this.vts.typeChange.subscribe((value) => {
+      this.typeMsg = value;
+      console.log('typeSub', value);
+    })
 
   }
-  private sayText(msg: string) {
-    // här ska du läsa upp msg
-    const speech = new Speech();
-    speech.speak({
-      text: msg,
-      }).then(() => {
-      console.log("Success !")
-      }).catch(e => {
-      console.error("An error occurred :", e)
-      })
+  sayText(event: any) {
+    if(event.srcElement.value !== undefined &&
+       event.srcElement.value !== null) {
+         let msg = event.srcElement.value;
+ // här ska du läsa upp msg
+ const speech = new Speech();
+ speech.speak({
+   text: msg,
+   }).then(() => {
+   console.log("Success !")
+   }).catch(e => {
+   console.error("An error occurred :", e)
+   })
+       }
+   
   }
  startListen(): void {
     this.recording = true;
@@ -99,8 +110,9 @@ export class MainComponent implements OnInit {
     this.vts.exec(event.srcElement.value);
   }
   wordInputText(msg) {
-    console.log("wordInputText msg:", msg);
-    this.vts.execText(msg);
+    if(msg !== null && msg !== undefined ) {
+      this.vts.execText(msg.srcElement.value);
+    }
   }
   translateTo(event: any) {
     this.vts.setLanguage(event.value);

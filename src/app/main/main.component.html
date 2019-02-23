@@ -25,9 +25,9 @@
       <br>
 
       <!-- Buttons -->
-      <button style="padding:20px" mat-raised-button color="primary" [disabled]="recording" (click)="startListen()">Get
+      <button style="padding:5px" mat-raised-button color="primary" [disabled]="recording" (click)="startListen()">Get
             Voice <mat-icon>phone</mat-icon></button>
-      <button style="padding:20px" mat-raised-button color="warn" [disabled]="!recording" (click)="stopListen()">Stop
+      <button style="padding:5px; float:right" mat-raised-button color="warn" [disabled]="!recording" (click)="stopListen()">Stop
             Voice<mat-icon>phone_missed</mat-icon></button>
       <!--
       <button style="padding:20px" mat-raised-button (click)="wordinput.click()">Translate</button>
@@ -55,16 +55,16 @@
 
       <p>Operator side</p>
       <div class="input-group" id="textareaOperator">
-            <textarea id="textareaOperatorId" class="form-control custom-control" rows="3" style="resize:none"></textarea>
-            <span class="input-group-addon btn btn-primary" id="translateButton" (click)="wordInputText()">Translate</span>
+            <textarea id="textareaOperatorId" class="form-control custom-control" #inputWord (click)="wordInputText($event)"rows="3" value="" style="resize:none"></textarea>
+            <span class="input-group-addon btn btn-primary" id="translateButton" (click)="inputWord.click()">Translate</span>
       </div>
 
       <br>
 
       <p>Translated text</p>
       <div class="input-group" id="textareaTranslated">
-            <textarea id="textareaTranslatedId" class="form-control custom-control" rows="3" style="resize:none"></textarea>
-            <span class="input-group-addon btn btn-primary" id="synthesisSpeechButton" (click)="func()">Synthesis speech</span>
+            <textarea [value]="typeMsg" id="textareaTranslatedId" class="form-control custom-control" #say (click)="sayText($event)" rows="3" style="resize:none"></textarea>
+            <span class="input-group-addon btn btn-primary" id="synthesisSpeechButton" (click)="say.click()">Synthesis speech</span>
       </div>
 
 </div>
