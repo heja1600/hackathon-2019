@@ -316,6 +316,7 @@ var VoiceService = /** @class */ (function () {
         var _this = this;
         this.ss = ss;
         this.message = '';
+        this.isRecording = false;
         this.language = { lang: 'Svenska', code: 'sv-SE' };
         this.messageChange = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.ss.onresult = function (e) {
@@ -326,15 +327,19 @@ var VoiceService = /** @class */ (function () {
             console.log('hej');
         };
         this.ss.onend = function (e) {
-            _this.start();
+            if (_this.isRecording) {
+                _this.start();
+            }
         };
     }
     VoiceService.prototype.start = function () {
         console.log('start', this.language);
+        this.isRecording = true;
         this.ss.lang = this.language.code;
         this.ss.start();
     };
     VoiceService.prototype.stop = function () {
+        this.isRecording = false;
         this.ss.stop();
     };
     VoiceService.prototype.setLanguage = function (lang) {
@@ -382,8 +387,9 @@ var VoiceTranslationService = /** @class */ (function () {
     VoiceTranslationService.prototype.translate = function (message) {
         // kod för översättning från voice input
     };
-    VoiceTranslationService.prototype.setLanguage = function (language) {
-        switch (language.code) {
+    VoiceTranslationService.prototype.setLanguage = function (code) {
+        console.log(code);
+        switch (code) {
             case 'sv-SE':
                 this.languageTo = 'sv';
                 break;
@@ -395,6 +401,27 @@ var VoiceTranslationService = /** @class */ (function () {
                 break;
             case 'fr-FR':
                 this.languageTo = 'fr';
+                break;
+            case 'af-ZA':
+                this.languageTo = 'af';
+                break;
+            case 'es-ES':
+                this.languageTo = 'es';
+                break;
+            case 'it-IT':
+                this.languageTo = 'it';
+                break;
+            case 'ru-RU':
+                this.languageTo = 'ru';
+                break;
+            case 'fi-FI':
+                this.languageTo = 'fi';
+                break;
+            case 'pl-PL':
+                this.languageTo = 'pl';
+                break;
+            case 'is-IS':
+                this.languageTo = 'is';
                 break;
         }
     };
