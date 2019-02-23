@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 import { Translator } from 'angular-translator';
 import { Language } from '../shared/language';
 import { trigger, style, state, animate, transition } from '@angular/animations';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -38,6 +39,13 @@ export class MainComponent implements OnInit {
     {lang:'Engelska', code: 'en-GB'},
     {lang:'Tyska', code: 'de-DE'},
     {lang:'Franska', code: 'fr-FR'},
+    {lang:'Afrikaans', code: 'af-ZA'},
+    {lang:'Spanska', code: 'es-ES'},
+    {lang:'Italienska', code: 'it-IT'},
+    {lang:'Ryska', code: 'ru-RU'},
+    {lang:'Finska', code: 'fi-FI'},
+    {lang:'Polska', code: 'pl-PL'},
+    {lang:'Isländska', code: 'is-IS'},
   ];
   recording = false;
   anim = 'inactive';
@@ -85,8 +93,8 @@ export class MainComponent implements OnInit {
   wordInput(event: any) {
     this.vts.exec(event.srcElement.value);
   }
-  translateTo(lang: Language) {
-    this.vts.setLanguage(lang);
+  translateTo(event: any) {
+    this.vts.setLanguage(event.value);
   }
   translateFrom(lang: Language) {
     this.vs.setLanguage(lang);

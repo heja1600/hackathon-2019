@@ -3,17 +3,23 @@
                   <mat-radio-group>
                               <mat-label> Översätt från</mat-label>
                               <br>
-                              <mat-radio-button  *ngFor="let lang of languages" [value]="lang.code" (click)="translateFrom(lang)">{{lang.lang}}</mat-radio-button>
-                        </mat-radio-group>
+                              <span *ngFor="let lang of languages; let i = index"> 
+                                    <mat-radio-button *ngIf="i == 0 || i == 1"  [value]="lang.code" (click)="translateFrom(lang)">{{lang.lang}}</mat-radio-button>
+                     
+                              </span>
+                                 </mat-radio-group>
       </mat-card>
       
       <br>
       <mat-card>
-                  <mat-radio-group>
+                  <mat-form-field>
                               <mat-label> Översätt till</mat-label>
                               <br>
-                              <mat-radio-button  *ngFor="let lang of languages" [value]="lang.code" (click)="translateTo(lang)">{{lang.lang}}</mat-radio-button>
-                        </mat-radio-group>
+                              <mat-select style="width:100%;" matNativeControl (selectionChange)="translateTo($event)">
+                                    <mat-option *ngFor="let lang of languages" [value]="lang.code" >{{lang.lang}}</mat-option>
+                              </mat-select>
+                              <!--<mat-radio-button  *ngFor="let lang of languages" [value]="lang.code" (click)="translateTo(lang)">{{lang.lang}}</mat-radio-button>-->
+                        </mat-form-field>
       </mat-card>  
       <br>
       <mat-form-field style="width: 100%">

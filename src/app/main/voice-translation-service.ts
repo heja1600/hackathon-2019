@@ -23,8 +23,9 @@ export class VoiceTranslationService {
         // kod för översättning från voice input
     }
 
-    setLanguage(language: Language) {
-        switch(language.code) {
+    setLanguage(code: string) {
+        console.log(code);
+        switch(code) {
             case 'sv-SE':
                 this.languageTo = 'sv';
             break;
@@ -36,6 +37,27 @@ export class VoiceTranslationService {
             break;
             case 'fr-FR': 
                 this.languageTo = 'fr';
+            break;
+            case 'af-ZA':
+                this.languageTo = 'af';
+            break;
+            case 'es-ES':
+                this.languageTo = 'es';
+            break;
+            case 'it-IT':
+                this.languageTo = 'it';
+            break;
+            case 'ru-RU':
+                this.languageTo = 'ru';
+            break;
+            case 'fi-FI':
+                this.languageTo = 'fi';
+            break;
+            case 'pl-PL':
+                this.languageTo = 'pl';
+            break;
+            case 'is-IS':
+                this.languageTo = 'is';
             break;
         }
     }
