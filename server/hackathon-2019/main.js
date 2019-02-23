@@ -224,7 +224,7 @@ var MainComponent = /** @class */ (function () {
         this.translateSub = this.vts.translateMsgChange.subscribe(function (value) {
             _this.test = _this.test + " " + value;
             _this.translateMsg = value;
-            //this.sayText(this.translateMsg);
+            _this.sayText(_this.translateMsg);
         });
     };
     MainComponent.prototype.sayText = function (msg) {
@@ -330,13 +330,9 @@ var VoiceService = /** @class */ (function () {
             console.log('hej');
         };
         this.ss.onend = function (e) {
-<<<<<<< HEAD
-            _this.start();
-=======
             if (_this.isRecording) {
                 _this.start();
             }
->>>>>>> 3f3c4e0126c4c702089714bdc8474c5f169b63b0
         };
     }
     VoiceService.prototype.start = function () {
