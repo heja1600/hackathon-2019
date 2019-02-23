@@ -27,9 +27,9 @@
       </mat-form-field >
 
 <br>
-      <button mat-raised-button color="primary" [disabled]="recording" (click)="startListen()">Get Voice</button>
-      <button mat-raised-button [disabled]="!recording" (click)="stopListen()">Stop Voice</button>
-      <button mat-raised-button (click)="wordinput.click()">Translate</button>
+      <button style="padding:20px" mat-raised-button color="primary" [disabled]="recording" (click)="startListen()">Get Voice</button>
+      <button style="padding:20px" mat-raised-button color="warn"[disabled]="!recording" (click)="stopListen()">Stop Voice</button>
+      <button style="padding:20px" mat-raised-button (click)="wordinput.click()">Translate</button>
 <br>
 <br>
       <mat-form-field appearance="outline" style="width: 100%">
@@ -41,7 +41,9 @@
                         <mat-label>Translated Output</mat-label>
                         <input [value]="translateMsg"matInput placeholder="Placeholder">
                       </mat-form-field>
-      <div class="container">
+  
+<!--
+          <div class="container">
                  
             <h5> Voice Input</h5>
             <textarea class="form-control custom-control input-group" rows="3" style="resize:none">{{message}}</textarea>
@@ -50,7 +52,6 @@
             <textarea class="form-control custom-control input-group" rows="3" style="resize:none">{{translateMsg}}</textarea>
             </div>
       </div>
-<!--
    <p>Raw speech-to-text</p>
       <div class="input-group" id="textareaTranslated">
             <textarea class="form-control custom-control" rows="3" style="resize:none">{{message}}</textarea>
