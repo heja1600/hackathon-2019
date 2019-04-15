@@ -1,5 +1,14 @@
 ## Angular
 
+### INSTALL DEPENDENCY
+
+npm install -g ng-cli
+npm install -g concurrently
+npm install -g nodemon
+npm install -g ng-factory
+npm install -g minimatch
+npm install -g nodemon
+
 npm install -g @angular/cli
 npm install --save @angular/material @angular/cdk @angular/animations
 ng add @angular/material
